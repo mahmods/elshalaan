@@ -5,7 +5,7 @@
 		  <div v-for="item in data.form" :key="item.name" class="form-group">
 		    <label>{{item.label}}</label>
 		    <!-- asdasd -->
-		    <input v-if="item.type == 'input'" v-model="item.value" :type="item.innerType" class="form-control" >
+		    <input v-if="item.type == 'input'" v-model="item.value" :type="item.innerType" class="form-control" :class="errors[item.model] ? 'is-invalid' : ''" >
 			<vue-editor v-if="item.editor" v-model="item.value"></vue-editor>
 		    <textarea v-else-if="item.type == 'textarea'" v-model="item.value" class="form-control"></textarea>
 			<div v-else-if="item.type == 'select'" class="form-group">
@@ -15,7 +15,8 @@
 			</div>
 			<div v-else-if="item.type == 'image'" class="form-group">
 			<input @change="onFileChange(item, $event)" type="file" accept="images/*" class="form-control-file">
-		</div>
+			</div>
+			<div v-if="errors[item.model]" class="invalid-feedback">{{errors[item.model][0]}}</div>
 		  </div>
 		  <button type="submit" class="btn btn-primary">Save</button>
 		</form>
@@ -35,6 +36,7 @@ export default {
 		return {
 			data: [],
 			form: [],
+			errors: [],
             loading: true,
             initializeURL: '',
             storeURL: '',
@@ -88,6 +90,10 @@ export default {
                         + 'ed successfully!', {type: 'success'})
 					this.$router.push('/dashboard/' + this.$route.params.model)
 				}
+			})
+			.catch(err => {
+				if(err.response.status === 422)
+					this.errors = err.response.data.errors
 			})
         },
         capitalizeFirstLetter(string) {
