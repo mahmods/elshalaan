@@ -12,4 +12,16 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css');
+   .sass('resources/assets/sass/app.scss', 'public/css')
+   .styles([
+   		'resources/assets/css/tornado-rtl.css',
+   		'resources/assets/css/animations.css',
+   		'resources/assets/css/theme.css'
+   	], 'public/css/style.css')
+   .scripts([
+   		'resources/assets/js/style/jquery.min.js',
+   		'resources/assets/js/style/tornado.js',
+   		'resources/assets/js/style/script.js'
+   	], 'public/js/style.js')
+   .copyDirectory('resources/assets/img', 'public/img')
+   .copyDirectory('resources/assets/css/fonts', 'public/css/fonts');

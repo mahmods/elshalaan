@@ -167,6 +167,7 @@ return [
         /*
          * Package Service Providers...
          */
+        MahaCMS\MahaCMS\MahaCMSServiceProvider::class,
 
         /*
          * Application Service Providers...

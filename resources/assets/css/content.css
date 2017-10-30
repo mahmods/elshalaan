@@ -1,0 +1,241 @@
+/************Start section Content***********/
+
+.content {
+    padding: 50px 40px 0;
+    margin-top: 70px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.10);
+}
+
+.content .img {
+    border-radius: 10px;
+    background: url(../img/bg6.jpg) no-repeat center center;
+    height: 500px;
+}
+
+.content h2 {
+    font-size: 28px;
+    font-weight: 500;
+    color: #04b0d6;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+.content span {
+    font-size: 15px;
+    font-weight: 500;
+    color: #a6a6a6;
+    margin-left: 30px;
+}
+
+.content span:before {
+    font-size: 20px;
+    margin-left: 8px;
+}
+
+.content .time1 {
+    float: right;
+}
+
+.content .time2 span:last-child {
+    color: #04b0d6;
+}
+
+.content p {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 30px;
+    color: #4b4b4b;
+}
+
+.content h3 {
+    font-size: 20px;
+    font-weight: 500;
+    color: #494949;
+    margin-top: 10px;
+}
+
+.content .share {
+    border-top: 1px solid rgba(0, 0, 0, 0.10);
+    direction: ltr;
+    padding-top: 15px;
+}
+/*****All Button Icons******/
+.content .share .btn.labeled {
+    border: 0;
+    padding: 10px 10px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.content .share .btn.labeled:before {
+    color: #fff;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+    margin-right: 10px;
+    top: -1px;
+}
+
+/*****Facebook*****/
+.content .share .btn.labeled.ti-facebook {
+    background-color: #517de0;
+}
+.content .share .btn.labeled.ti-facebook:before {
+    background-color: #4970c9;
+    margin-left: -35px;
+}
+ /*****Twitter*****/
+.content .share .btn.labeled.ti-twitter {
+    background-color: #51c7e0;
+}
+.content .share .btn.labeled.ti-twitter:before {
+    background-color: #49b3c9;
+    margin-left: -38px;
+}
+/******googleplus******/
+.content .share .btn.labeled.ti-googleplus {
+    background-color: #eb5849;
+}
+.content .share .btn.labeled.ti-googleplus:before {
+    background-color: #d34f42;
+    margin-left: -13px;
+}
+
+/******Linkedin******/
+.content .share .btn.labeled.ti-linkedin {
+    background-color: #0287b9;
+}
+.content .share .btn.labeled.ti-linkedin:before {
+    background-color: #0179a7;
+    margin-left: -30px;
+}
+
+/************End section Content***********/
+
+
+/*************Start section Add Comment************/
+
+.add-content {
+    margin-top: 50px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.10);
+}
+
+.add-content h2 {
+    background-color: #04b0d6;
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+    padding: 20px;
+    margin-bottom: 40px;
+}
+
+.add-content input {
+    padding: 15px;
+    border-radius: 5px;
+    display: inline-block;
+    color: #414141;
+    font-size: 14px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    width: 50%;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+
+.add-content input:last-child {
+    width: 70%;
+    padding: 15px 15px 100px 0;
+}
+
+.add-content a {
+    padding: 15px 45px;
+    background-color: #04b0d6;
+    border-radius: 5px;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 400;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 59%;
+    margin-bottom: 40px;
+}
+
+.add-content a:hover {
+    background-color: #019dbf;
+}
+
+@media (max-width:1024px) {
+    .add-content input {
+        width: 90%;
+    }
+    .add-content input:last-child {
+        width: 90%;
+    }
+}
+
+
+/*************End user-account**************/
+
+.user-account {
+    margin-top: 50px;
+    margin-bottom: 90px;
+    border-radius: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.10);
+}
+
+.user-account .user-name {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.10);
+    padding: 40px 0;
+}
+
+.user-account .user-name .img {
+    height: 50px;
+    width: 50px;
+    background-color: #ebebeb;
+    margin-right: 30px;
+    border-radius: 50%;
+    border: 0;
+    float: right;
+}
+
+.user-account .user-name span {
+    font-size: 16px;
+    font-weight: 400;
+    color: #868686;
+    display: inline-block;
+    margin-top: 10px;
+    margin-right: 15px;
+}
+
+.user-account .user-name .date {
+    font-size: 16px;
+    font-weight: 400;
+    color: #868686;
+    float: left;
+    margin-left: 30px;
+}
+
+.user-account>p {
+    color: #4b4b4b;
+    line-height: 30px;
+    font-weight: 400;
+    margin-right: 30px;
+    margin-left: 30px;
+}
+
+
+/************Start user-account***********/
+
+
+/************End section Add Comment***********/

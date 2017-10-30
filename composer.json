@@ -4,11 +4,42 @@
     "keywords": ["framework", "laravel"],
     "license": "MIT",
     "type": "project",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/MahaCMS"
+        },
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/Blog"
+        },
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/Permissions"
+        },
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/Profile"
+        },
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/Roles"
+        },
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/Settings"
+        },
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/Users"
+        }
+    ],
     "require": {
         "php": ">=7.0.0",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "mahacms/mahacms": "^1.0"
     },
     "require-dev": {
         "filp/whoops": "~2.0",
