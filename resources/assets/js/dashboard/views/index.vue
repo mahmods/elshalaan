@@ -20,8 +20,9 @@
 			<div class="dashboard__content--header">
 				<h1>Dashboard</h1>
 				<div>
-					<router-link to="/dashboard">Home</router-link><span v-if="$route.params.p">  /  </span>
-					<router-link v-if="$route.params.p" :to="'/dashboard/'+$route.params.p">{{$route.params.p}}</router-link>
+					<router-link to="/dashboard">Home</router-link>
+					<span v-if="$route.params.model">  /  </span>
+					<router-link v-if="$route.params.model" :to="'/dashboard/'+$route.params.model">{{$route.params.model}}</router-link>
 				</div>
 			</div>
 			<router-view class="dashboard__content--container"></router-view>
@@ -30,8 +31,8 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Permissions from '../store/Permissions'
+import Permissions from '../../store/Permissions'
+import { get } from '../../helpers/api'
 export default {
 	data() {
 		return {
@@ -40,13 +41,8 @@ export default {
 		}
 	},
 	created() {
-		axios({
-			method: 'GET',
-			url: '/api/menu',
-			headers: {
-				'Authorization': `Bearer ${this.$auth.getToken()}`
-			}
-		}).then(response => this.menu = response.data.menu)
+        get('menu')
+        .then(response => this.menu = response.data.menu)
 	},
 	methods: {
 		menuHasSingleItem: (m) => {

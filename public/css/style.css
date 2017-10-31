@@ -5109,3 +5109,211 @@ body.lb-disable-scrolling{overflow:hidden;}
  }
  /*********End Tittle************/
  /******************************Title Fore All Pages***********************/
+
+/****Start Navbar*****/
+.navigation{
+    box-shadow: none;
+
+}
+
+/****End Navbar*****/
+/********StartTittle ************/
+.title{
+    height: 70px;
+    width: 100%;
+    background-color: #04b0d6;
+    margin-top: 20px;
+    line-height: 65px;
+    color: #fff;
+}
+/********End Tittle************/
+
+/*****Start about-content*****/
+.about-content{
+    background: url('../img/bg5.png') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #fff;
+    padding: 150px 0 100px;
+ }
+
+.about-content img{
+    width: 100%;
+    margin-bottom:50px;
+    
+}
+.about-content h2{
+    font-size: 25px;
+    font-weight: 500;
+}
+.about-content p{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 30px;
+}
+/*****End about-content*****/
+
+/************Start Section Our Massege************/
+.our-massege{
+    color: #fff;
+}
+.our-massege .our{
+    width: 50%;
+    padding: 140px 75px;
+}
+.our-massege .our h2{
+    font-size: 24px;
+    font-weight: 500;
+}
+.our-massege .our p{
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 31px;
+}
+.our-massege .view{
+    background-color: #04b0d6;
+        float: left
+
+}
+.our-massege .massege{
+    background-color: #0f6e8c;
+
+}
+@media (max-width:1024px)
+{
+   .our-massege .view{
+        float: none;
+
+  } 
+    .our-massege .our{
+    width: 100%;
+    padding: 30px;
+}
+}
+/************End Section Our Massege*************/
+
+
+/***********Start Section Contact Us*******/
+.contact-us{
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0,0,0,0.14);
+}
+/***********End Section Contact Us*********/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ /**************************Start Section library************************/
+ 
+ .portfolio {
+     padding-top: 90px;
+     padding-bottom: 150px;
+     background-color: #fff;
+ }
+
+ /**************************End Section library************************/
+
+ /******Sections Numbers******/
+ 
+ .number {
+     text-align: center;
+     background: transparent;
+     position: absolute;
+     bottom: 160px;
+     right: 50%;
+     margin-right: -130px
+ }
+@media(max-width:768px){
+    .number{
+        bottom: 220px;
+    }
+}
+ .number ul {
+     padding: 0;
+     margin: 0;
+ }
+ 
+ .number ul li {
+     display: inline-block;
+     width: 40px;
+     background-color: #fff;
+     border-radius: 5px;
+     border: 1px solid rgba(0, 0, 0, 0.10);
+     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.10);
+     margin-left: 10px;
+ }
+ 
+ .number ul li a {
+     color: #9a9a9a;
+     line-height: 40px;
+     font-size: 15px;
+     font-weight: 500;
+ }
+ 
+ .number ul li a:hover {
+     color: #04b0d6;
+ }
+ /******Sections Numbers******/

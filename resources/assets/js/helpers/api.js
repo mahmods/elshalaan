@@ -1,32 +1,33 @@
 import axios from 'axios'
+import { api_token } from '../store/Auth'
 
-export function get(url, vue) {
+export function get(url) {
 	return axios({
 		method: 'GET',
 		url: '/api/' + url,
 		headers: {
-			'Authorization': 'Bearer ' + vue.$auth.getToken()
+			'Authorization': 'Bearer ' + api_token
 		}
 	})
 }
 
-export function post(url, data, vue) {
+export function post(url, data) {
 	return axios({
 		method: 'POST',
 		url: '/api/' + url,
 		data: data,
 		headers: {
-			'Authorization': 'Bearer ' + vue.$auth.getToken()
+			'Authorization': 'Bearer ' + api_token
 		}
 	})
 }
 
-export function del(url, vue) {
+export function del(url) {
 	return axios({
 		method: 'DELETE',
 		url: '/api/' + url,
 		headers: {
-			'Authorization': 'Bearer ' + vue.$auth.getToken()
+			'Authorization': 'Bearer ' + api_token
 		}
 	})
 }

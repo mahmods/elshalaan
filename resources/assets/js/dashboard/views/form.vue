@@ -1,0 +1,98 @@
+<template>
+	<div v-if="!loading">
+		<form @submit.prevent="save">
+			<h1>{{action}} {{$route.params.model}}</h1>
+		  <div v-for="item in data.form" :key="item.name" class="form-group">
+		    <label>{{item.label}}</label>
+		    <!-- asdasd -->
+		    <input v-if="item.type == 'input'" v-model="item.value" :type="item.innerType" class="form-control" >
+			<vue-editor v-if="item.editor" v-model="item.value"></vue-editor>
+		    <textarea v-else-if="item.type == 'textarea'" v-model="item.value" class="form-control"></textarea>
+			<div v-else-if="item.type == 'select'" class="form-group">
+				<select class="form-control" v-model="item.value">
+					<option v-for="option in item.options" :key="option.id" :value="option.id">{{option.name}}</option>
+				</select>
+			</div>
+			<div v-else-if="item.type == 'image'" class="form-group">
+			<input @change="onFileChange(item, $event)" type="file" accept="images/*" class="form-control-file">
+		</div>
+		  </div>
+		  <button type="submit" class="btn btn-primary">Save</button>
+		</form>
+	</div>
+</template>
+
+<script>
+import { get, post } from '../../helpers/api'
+import { VueEditor } from 'vue2-editor'
+import Pluralize from 'pluralize'
+
+export default {
+	components: {
+      VueEditor
+   },
+	data() {
+		return {
+			data: [],
+			form: [],
+            loading: true,
+            initializeURL: '',
+            storeURL: '',
+            action: 'Create'
+		}
+	},
+	created() {
+        this.fetchForm()
+	},
+	watch: {
+		'$route.params.model'() {
+			this.fetchForm()
+		}
+	},
+	methods: {
+		fetchForm() {
+            this.initializeURL = `${this.$route.params.model}/create`
+            this.storeURL = `${this.$route.params.model}`
+            if(this.$route.meta.mode === 'edit') {
+                this.initializeURL = `${this.$route.params.model}/${this.$route.params.id}/edit`
+                this.storeURL = `${this.$route.params.model}/${this.$route.params.id}?_method=PUT`
+                this.action = 'Edit'
+            }
+
+			this.loading = true;
+			get(this.initializeURL)
+			.then(response => {
+				this.data = response.data
+				this.loading = false;
+			})
+		},
+		onFileChange(item, e) {
+			let files = e.target.files || e.dataTransfer.files;
+			if (!files.length)
+				return;
+			item.value = files[0]
+		},
+		save() {
+			var form = new FormData()
+			this.data.form.forEach(input => {
+				form.set(input.model, input.value)
+			})
+			post(this.storeURL, form)
+			.then(response => {
+				this.data.form.id = response.data.id
+				if(response.data.success) {
+					this.$toasted.show(
+                        this.capitalizeFirstLetter(Pluralize.singular(this.$route.params.model))
+                        + ' #' +  this.data.form.id + ' '
+                        + this.action.toLowerCase()
+                        + 'ed successfully!', {type: 'success'})
+					this.$router.push('/dashboard/' + this.$route.params.model)
+				}
+			})
+        },
+        capitalizeFirstLetter(string) {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+	}
+}
+</script>

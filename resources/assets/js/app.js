@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import router from './router'
+import router from './router/index'
 import Auth from './store/Auth'
 import Toasted from 'vue-toasted';
 

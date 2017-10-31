@@ -686,7 +686,7 @@
             "dist": {
                 "type": "path",
                 "url": "../MahaCMS/packages/MahaCMS/Blog",
-                "reference": "67dda57133b769683d8392d35cde3c7740117d0b",
+                "reference": "a7b49f94b2675ebe45106f874eff1ccfa3e68961",
                 "shasum": null
             },
             "type": "library",
@@ -709,7 +709,7 @@
             "dist": {
                 "type": "path",
                 "url": "../MahaCMS/packages/MahaCMS/MahaCMS",
-                "reference": "3ae342fd2f7d29b2c7c474d9db4b5bae2bce8e06",
+                "reference": "fc63872fe3eef2761c2d8529d3dc643c26b9f4a6",
                 "shasum": null
             },
             "require": {
@@ -740,7 +740,7 @@
             "dist": {
                 "type": "path",
                 "url": "../MahaCMS/packages/MahaCMS/Permissions",
-                "reference": "98fda215ed2f40b89553f9f1844a4c9913b5d2a4",
+                "reference": "30e94b0c2c6f0d2a19ef57989263bcd7deebe373",
                 "shasum": null
             },
             "type": "library",
@@ -763,7 +763,7 @@
             "dist": {
                 "type": "path",
                 "url": "../MahaCMS/packages/MahaCMS/Profile",
-                "reference": "7a38e92424077fba15370503cfcae95a4e7534de",
+                "reference": "d1bdbdc79b949d05da8ae691bb172ef0612d4d1e",
                 "shasum": null
             },
             "type": "library",
@@ -786,7 +786,7 @@
             "dist": {
                 "type": "path",
                 "url": "../MahaCMS/packages/MahaCMS/Roles",
-                "reference": "fe85b17f15234f2a9214ee45a7203cf370da1964",
+                "reference": "58c71decc08ace8bdf5f30497c78195906125da7",
                 "shasum": null
             },
             "type": "library",
@@ -809,7 +809,7 @@
             "dist": {
                 "type": "path",
                 "url": "../MahaCMS/packages/MahaCMS/Settings",
-                "reference": "e103d28d6e287da2e9d22ac73bb177a7e93e33d4",
+                "reference": "567da4687704c1d23a5e271b4cadfb47ceeb125b",
                 "shasum": null
             },
             "type": "library",
@@ -832,7 +832,7 @@
             "dist": {
                 "type": "path",
                 "url": "../MahaCMS/packages/MahaCMS/Users",
-                "reference": "c2f5744063cb2a0e040ab62e14eb2292354948d2",
+                "reference": "028f39cd551abbd5af5e4362d7da57dcb764d4e2",
                 "shasum": null
             },
             "type": "library",

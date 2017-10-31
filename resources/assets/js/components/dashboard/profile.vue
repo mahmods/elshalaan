@@ -27,7 +27,12 @@ import axios from 'axios'
 export default {
 	data() {
 		return {
-			profile: [],
+			profile: {
+				nickname: '',
+				first_name: '',
+				last_name: '',
+				description: ''
+			},
 			loading: true
 		}
 	},
@@ -45,6 +50,7 @@ export default {
 				}
 			})
 			.then(response => {
+				console.log(response.data)
 				this.profile = response.data.profile
 				this.loading = false;
 			})

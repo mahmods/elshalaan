@@ -16,8 +16,10 @@ mix.js('resources/assets/js/app.js', 'public/js')
    .styles([
    		'resources/assets/css/tornado-rtl.css',
    		'resources/assets/css/animations.css',
-   		'resources/assets/css/theme.css'
-   	], 'public/css/style.css')
+   		'resources/assets/css/theme.css',
+   		'resources/assets/css/about.css',
+   		'resources/assets/css/portfolio.css',
+	], 'public/css/style.css')
    .scripts([
    		'resources/assets/js/style/jquery.min.js',
    		'resources/assets/js/style/tornado.js',

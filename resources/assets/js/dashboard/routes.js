@@ -1,8 +1,10 @@
+import CreateForm from '../components/forms/create'
+import EditForm from '../components/forms/edit'
 import AccessForm from '../components/forms/access'
 import ManageForm from '../components/forms/manage'
 import Login from '../components/auth/login'
 import Register from '../components/auth/register'
-import Dashboard from '../dashboard/views/index'
+import Dashboard from '../components/dashboard'
 import Settings from '../components/dashboard/settings'
 import Profile from '../components/dashboard/profile'
 import UsersList from '../components/dashboard/users'
@@ -10,7 +12,6 @@ import UsersRoles from '../components/dashboard/usersRoles'
 import RolesList from '../components/dashboard/roles'
 import PostsList from '../components/dashboard/posts/index'
 import RolesPermissions from '../components/dashboard/rolesPermissions'
-import form from '../dashboard/views/form'
 
 export default [
 	{
@@ -25,9 +26,9 @@ export default [
             { path: 'users/:id/roles', component: UsersRoles },
             { path: 'roles', component: RolesList },
             { path: 'roles/:id/permissions', component: RolesPermissions },
-            { path: ':model/create', component: form, meta: {mode: 'create'} },
-            { path: ':model/:id/update', component: form, meta: {mode: 'edit'} },
             { path: ':p', component: AccessForm },
+            { path: ':p/create', component: CreateForm },
+            { path: ':p/:id/update', component: EditForm },
             { path: ':p/manage', component: ManageForm },
     	]
     }
