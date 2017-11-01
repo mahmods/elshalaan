@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <!-- Required meta tags always come first -->
     <meta charset="utf-8">
@@ -34,7 +33,9 @@
 <div id="root"></div>
     <!-- Required JS Files -->
     <script src="{{asset('js/app.js')}}"></script>
-    <script src="{{asset('js/style.js')}}"></script>
+    <script src="{{asset('js/jquery.min.js')}}"></script>
+    <script src="{{asset('js/tornado.js')}}"></script>
+    <script src="{{asset('js/script.js')}}"></script>
 </body>
 
 </html>

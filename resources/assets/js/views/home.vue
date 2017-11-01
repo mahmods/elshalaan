@@ -1,6 +1,5 @@
 <template>
   <div>
-      <app-header></app-header>
     <!--Start Section Header-->
     <section id="Header" class="header">
         <div class="container">
@@ -219,18 +218,13 @@
         </div>
     </section>
     <!--End Section Send massage-->
-    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import appHeader from './app-header'
-import appFooter from './app-footer'
 import {get} from '../helpers/api'
+
 export default {
-    components: {
-      appHeader, appFooter
-   },
    data() {
        return {
            services: [],
@@ -238,6 +232,27 @@ export default {
            team: []
        }
    },
+   beforeRouteEnter (to, from, next) {
+       get('posts/query?category=فريق العمل')
+       .then(repsonse => {
+           //this.team = repsonse.data.items
+           next(vm => vm.setData(repsonse.data.items))
+       })
+  },
+  beforeRouteUpdate (to, from, next) {
+    this.team = null
+    get('posts/query?category=فريق العمل')
+       .then(repsonse => {
+           //this.team = repsonse.data.items
+           this.setData(repsonse.data.items)
+           next()
+       })
+  },
+  methods: {
+      setData(data) {
+          this.team = data
+      }
+  },
    created() {
        get('posts/query?category=خدماتنا')
        .then(repsonse => {
@@ -247,14 +262,18 @@ export default {
        .then(repsonse => {
            this.portfolio = repsonse.data.items
        })
-       get('posts/query?category=فريق العمل')
-       .then(repsonse => {
-           this.team = repsonse.data.items
-       })
+
+   },
+   mounted: function () {
+       this.$nextTick(function () {
+            // Code that will run only after the
+            // entire view has been rendered
+        })
+            console.log('mounted')
    }
 }
 </script>
 
-<style>
-
+<style scoped>
+@import url('../../css/theme.css');
 </style>

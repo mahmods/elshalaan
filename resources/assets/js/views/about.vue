@@ -1,6 +1,5 @@
 <template>
   <div>
-      <app-header></app-header>
     <!--Start About Us-->
     <section class="title">
         <div class="container">
@@ -101,18 +100,12 @@
     </section>
 
     <!--End Section Our Team-->
-    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import appHeader from './app-header'
-import appFooter from './app-footer'
 import {get} from '../helpers/api'
 export default {
-    components: {
-      appHeader, appFooter
-   },
    data() {
        return {
            team: []
@@ -126,7 +119,3 @@ export default {
    }
 }
 </script>
-
-<style>
-
-</style>

@@ -1,6 +1,5 @@
 <template>
   <div>
-      <app-header></app-header>
       <section id="Our-Serviece" class="serviece">
         <div class="container">
             <div class="row">
@@ -20,18 +19,12 @@
             </div>
         </div>
     </section>
-    <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import appHeader from './app-header'
-import appFooter from './app-footer'
 import {get} from '../helpers/api'
 export default {
-    components: {
-      appHeader, appFooter
-   },
    data() {
        return {
            services: []

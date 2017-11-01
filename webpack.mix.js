@@ -18,12 +18,15 @@ mix.js('resources/assets/js/app.js', 'public/js')
    		'resources/assets/css/animations.css',
    		'resources/assets/css/theme.css',
    		'resources/assets/css/about.css',
-   		'resources/assets/css/portfolio.css',
 	], 'public/css/style.css')
    .scripts([
-   		'resources/assets/js/style/jquery.min.js',
    		'resources/assets/js/style/tornado.js',
-   		'resources/assets/js/style/script.js'
-   	], 'public/js/style.js')
+	   ], 'public/js/tornado.js')
+	.scripts([
+		'resources/assets/js/style/jquery.min.js',
+	], 'public/js/jquery.min.js')
+	.scripts([
+		'resources/assets/js/style/script.js',
+	], 'public/js/script.js')
    .copyDirectory('resources/assets/img', 'public/img')
    .copyDirectory('resources/assets/css/fonts', 'public/css/fonts');

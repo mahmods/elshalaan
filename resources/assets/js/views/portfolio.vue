@@ -1,6 +1,5 @@
 <template>
   <div>
-      <app-header></app-header>
       <!--Start About Us-->
     <section class="title">
         <div class="container">
@@ -41,18 +40,12 @@
         </ul>
     </section>
     <!--End Section Numbers-->
-      <app-footer></app-footer>
   </div>
 </template>
 
 <script>
-import appHeader from './app-header'
-import appFooter from './app-footer'
 import {get} from '../helpers/api'
 export default {
-    components: {
-      appHeader, appFooter
-   },
    data() {
        return {
            portfolio: []
@@ -66,3 +59,7 @@ export default {
    }
 }
 </script>
+
+<style scoped>
+@import url('../../css/portfolio.css');
+</style>
