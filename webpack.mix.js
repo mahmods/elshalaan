@@ -18,6 +18,8 @@ mix.js('resources/assets/js/app.js', 'public/js')
    		'resources/assets/css/animations.css',
    		'resources/assets/css/theme.css',
    		'resources/assets/css/about.css',
+   		'node_modules/slick-carousel/slick.css',
+   		'node_modules/slick-carousel/slick-theme.css',
 	], 'public/css/style.css')
    .scripts([
    		'resources/assets/js/style/tornado.js',

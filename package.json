@@ -20,6 +20,7 @@
         "jquery": "^3.2.1",
         "medium-editor": "^5.23.2",
         "pluralize": "^7.0.0",
+        "slick-carousel": "^1.8.1",
         "vue": "^2.5.2",
         "vue-router": "^3.0.1",
         "vue-toasted": "^1.1.22",

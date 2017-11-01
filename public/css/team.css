@@ -1,0 +1,49 @@
+ /**************************Start Section Our Team************************/
+ 
+ .our-team {
+     padding-top: 90px;
+     padding-bottom: 150px;
+     background-color: #fff;
+ }
+ /**************************End Section Our Team************************/
+ /******Sections Numbers******/
+ 
+ .number {
+     text-align: center;
+     background: transparent;
+     position: absolute;
+     bottom: 160px;
+     right: 50%;
+     margin-right: -130px
+ }
+@media(max-width:768px){
+    .number{
+        bottom: 220px;
+    }
+}
+ .number ul {
+     padding: 0;
+     margin: 0;
+ }
+ 
+ .number ul li {
+     display: inline-block;
+     width: 40px;
+     background-color: #fff;
+     border-radius: 5px;
+     border: 1px solid rgba(0, 0, 0, 0.10);
+     -webkit-box-shadow: 0 0 5px rgba(0, 0, 0, 0.10);
+     margin-left: 10px;
+ }
+ 
+ .number ul li a {
+     color: #9a9a9a;
+     line-height: 40px;
+     font-size: 15px;
+     font-weight: 500;
+ }
+ 
+ .number ul li a:hover {
+     color: #04b0d6;
+ }
+ /******Sections Numbers******/

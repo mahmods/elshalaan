@@ -223,53 +223,24 @@
 
 <script>
 import {get} from '../helpers/api'
+import initialise from '../style/script'
 
 export default {
+    props: ['team'],
    data() {
        return {
            services: [],
            portfolio: [],
-           team: []
        }
    },
-   beforeRouteEnter (to, from, next) {
-       get('posts/query?category=فريق العمل')
-       .then(repsonse => {
-           //this.team = repsonse.data.items
-           next(vm => vm.setData(repsonse.data.items))
-       })
-  },
-  beforeRouteUpdate (to, from, next) {
-    this.team = null
-    get('posts/query?category=فريق العمل')
-       .then(repsonse => {
-           //this.team = repsonse.data.items
-           this.setData(repsonse.data.items)
-           next()
-       })
-  },
-  methods: {
-      setData(data) {
-          this.team = data
-      }
-  },
    created() {
-       get('posts/query?category=خدماتنا')
-       .then(repsonse => {
-           this.services = repsonse.data.items
-       })
-       get('posts/query?category=سابقة أعمالنا')
-       .then(repsonse => {
-           this.portfolio = repsonse.data.items
-       })
-
+       initialise()
    },
-   mounted: function () {
-       this.$nextTick(function () {
-            // Code that will run only after the
-            // entire view has been rendered
-        })
-            console.log('mounted')
+   mounted() {
+       initialise()
+   },
+   updated() {
+       initialise()
    }
 }
 </script>
