@@ -1,17 +1,17 @@
 @extends('layout.main')
-@push('style')
+@section('style')
 <link href="css/about.css" rel="stylesheet">
-@endpush
+@endsection
 @section('content')
-    <!--Start About Us-->
+    <!--------------------------------------Start About Us-------------------------------->
     <section class="title">
         <div class="container">
             <h2 class="right">من نحن </h2>
         </div>
     </section>
-    <!--End About Us-->
+    <!--------------------------------------End About Us-------------------------------->
 
-    <!--Start about-content-->
+    <!--------------------------------------Start about-content-------------------------------->
     <section class="about-content">
         <div class="container">
             <div class="row">
@@ -29,9 +29,9 @@
             </div>
         </div>
     </section>
-    <!--End about-content-->
+    <!--------------------------------------End about-content-------------------------------->
 
-    <!--Start Section Our Massege-->
+    <!--------------------------------------Start Section Our Massege------------------------------>
     <section class="our-massege">
         <div class="our view">
             <h2>رؤيتنا</h2>
@@ -48,9 +48,9 @@
             </p>
         </div>
     </section>
-    <!--End Section Our Massege-->
+    <!--------------------------------------End Section Our Massege-------------------------------->
 
-    <!--Start Section Contact Us-->
+    <!------------------------------------------Start Section Contact Us------------------------------->
     <section id="Contact-us" class="contact-us">
         <div class="container">
             <div class="row row-zCenter">
@@ -81,27 +81,87 @@
             </div>
         </div>
     </section>
-    <!--End Section Contact Us-->
-        <!--Start Section Our Team-->
+    <!------------------------------------------End Section Contact Us--------------------------------->
+        <!------------------------------------------Start Section Our Team--------------------------------->
 
     <section id="ourTeam" class="our-team">
         <div class="container">
-            <h2>{{$team->name}}</h2>
+            <h2>فريق العمل</h2>
             <div class="row carousel-slider tornado-ui">
-            @foreach ($team->items as $t)
+
                 <div class="col-s-12 col-m-6 col-l-3 team-block ">
                     <div class="img-block">
-                    <img src="/img/{{ $t->image }}">
+                        <img src="img/team1.png">
                     </div>
                     <div class="p-block">
-                        <p>{{ $t->title }}</p>
-                        <p>{{ $t->content }}</p>
+                        <p>
+                            د. احمد عبد الحكيم
+                        </p>
+                        <p>
+                            دكتوراه في التمويل والبنوك جامعة عين شمس
+                        </p>
                     </div>
                 </div>
-            @endforeach
+
+
+                <div class="col-s-12 col-m-6 col-l-3 team-block">
+                    <div class="img-block">
+                        <img src="img/team2.png">
+                    </div>
+                    <div class="p-block">
+                        <p>
+                            د. احمد عبد الحكيم
+                        </p>
+                        <p>
+                            دكتوراه في التمويل والبنوك جامعة عين شمس
+                        </p>
+                    </div>
+                </div>
+                <div class="col-s-12 col-m-6 col-l-3 team-block">
+                    <div class="img-block">
+                        <img src="img/team1.png">
+                    </div>
+                    <div class="p-block">
+                        <p>د. هشام فاروق </p>
+                        <p> خبير تسويق ومبيعات. </p>
+                    </div>
+                </div>
+                <div class="col-s-12 col-m-6 col-l-3 team-block">
+                    <div class="img-block">
+                        <img src="img/team3.png">
+                    </div>
+                    <div class="p-block">
+                        <p>
+                            د. وليد المنزلاوي
+                        </p>
+                        <p>
+                            استشارى الموارد البشرية بمصر والامارات.
+                        </p>
+                    </div>
+                </div>
+
+
+
+
+                <div class="col-s-12 col-m-6 col-l-3 team-block ">
+                    <div class="img-block">
+                        <img src="img/team1.png">
+                    </div>
+                    <div class="p-block">
+                        <p>
+                            ا.جلال أحمد
+                        </p>
+                        <p>
+                            مُعلم أول ورئيس قسم القرآن وبناء الشخصية .
+                        </p>
+                    </div>
+                </div>
+
+
+
             </div>
         </div>
     </section>
 
-    <!--End Section Our Team--->
+    <!------------------------------------------End Section Our Team--------------------------------->
 @endsection

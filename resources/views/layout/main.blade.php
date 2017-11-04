@@ -30,11 +30,11 @@
     <link href="{{asset('css/tornado-rtl.css')}}" rel="stylesheet">
     <link href="{{asset('css/animations.css')}}" rel="stylesheet">
     <link href="{{asset('css/theme.css')}}" rel="stylesheet">
-    @yield('style')
+    @stack('style')
 </head>
 
 <body>
-    <!-------------------------------------------Start Navigation---------------------------------------->
+    <!--Start Navigation-->
     <section class="navigation  sticky-navbar">
         <div class="container">
                 <div class=" logo">
@@ -44,14 +44,14 @@
                     <nav class="navbar ">
                         <div class="navigation-menu scrollspy ">
                             <ul>
-                                <li class="active"><a href="index.html">الرئيسيه</a></li>
-                                <li><a href="about"> من نحن</a></li>
-                                <li><a href="serviece">خدماتنا </a></li>
-                                <li><a href="portfolio">سابقة أعمالنا    </a></li>
-                                <li><a href="team">فريق العمل   </a></li>
-                                <li><a href="content">  المحتوي  </a></li>
-                                <li><a href="library"> المكتبة الالكترونية للاستثمار والتمويل   </a></li>
-                                <li><a href="contact">اتصل بنا </a></li>
+                                <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">الرئيسيه</a></li>
+                                <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="about"> من نحن</a></li>
+                                <li class="{{ Request::is('services') ? 'active' : '' }}"><a href="services">خدماتنا </a></li>
+                                <li class="{{ Request::is('portfolio') ? 'active' : '' }}"><a href="portfolio">سابقة أعمالنا    </a></li>
+                                <li class="{{ Request::is('team') ? 'active' : '' }}"><a href="team">فريق العمل   </a></li>
+                                <li class="{{ Request::is('content') ? 'active' : '' }}"><a href="content">  المحتوي  </a></li>
+                                <li class="{{ Request::is('library') ? 'active' : '' }}"><a href="library"> المكتبة الالكترونية للاستثمار والتمويل   </a></li>
+                                <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="contact">اتصل بنا </a></li>
                             </ul>
                         </div>
                     </nav>
@@ -75,11 +75,11 @@
 
         </div>
     </section>
-    <!------------------------------------------End Navigation------------------------------------>
+    <!--End Navigation-->
 
     @yield('content')
 
-    <!-----------------------------------------Start Section Copy Right--------------------------------->
+    <!--Start Section Copy Right-->
     <section class="copy-right">
         <div class="container">
             <div class="row">
@@ -91,7 +91,7 @@
             </div>
         </div>
     </section>
-    <!------------------------------------------End Section Copy Right--------------------------------->
+    <!--End Section Copy Right-->
 
 
     <!-- Required JS Files -->

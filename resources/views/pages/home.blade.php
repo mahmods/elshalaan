@@ -1,6 +1,6 @@
 @extends('layout.main')
 @section('content')
-    <!------------------------------------------Start Section Header------------------------------->
+    <!--Start Section Header-->
     <section id="Header" class="header">
         <div class="container">
             <div class="logo2 wow fadeInLeft" data-wow-delay="1s">
@@ -9,9 +9,9 @@
         </div>
     </section>
 
-    <!------------------------------------------End Section Header--------------------------------->
+    <!--End Section Header-->
 
-    <!------------------------------------------Start Section Slogn Header------------------------------->
+    <!--Start Section Slogn Header-->
     <section class="slogn-header">
         <div class="overlay">
             <div class="container">
@@ -51,10 +51,10 @@
             </div>
         </div>
     </section>
-    <!------------------------------------------End Section Slogn Header--------------------------------->
+    <!--End Section Slogn Header-->
 
 
-    <!------------------------------------------Start Section About Us------------------------------->
+    <!--Start Section About Us-->
     <section id="About-Us" class="about-us">
         <div class="container-fluid">
             <div class="row">
@@ -89,10 +89,10 @@
             </div>
         </div>
     </section>
-    <!------------------------------------------End Section About Us--------------------------------->
+    <!--End Section About Us-->
 
 
-    <!------------------------------------------Start Section serviece------------------------------->
+    <!--Start Section serviece-->
     <section id="Our-Serviece" class="serviece">
         <div class="container">
             <div class="row">
@@ -269,9 +269,9 @@
             </div>
         </div>
     </section>
-    <!------------------------------------------End Section serviece--------------------------------->
+    <!--End Section serviece-->
 
-    <!------------------------------------------Start Section portfolio------------------------------->
+    <!--Start Section portfolio-->
 
     <section id="portfolio" class="portfolio">
         <div class="container">
@@ -290,8 +290,8 @@
             </div>
         </div>
     </section>
-    <!------------------------------------------End Section portfolio------------------------------->
-    <!------------------------------------------Start Section Our Team--------------------------------->
+    <!--End Section portfolio-->
+    <!--Start Section Our Team-->
 
     <section id="ourTeam" class="our-team">
         <div class="container">
@@ -315,9 +315,9 @@
         </div>
     </section>
 
-    <!------------------------------------------End Section Our Team--------------------------------->
+    <!--End Section Our Team-->
 
-    <!------------------------------------------Start Section Contact Us------------------------------->
+    <!--Start Section Contact Us-->
     <section id="Contact-us" class="contact-us">
         <div class="container">
             <div class="row row-zCenter">
@@ -348,9 +348,9 @@
             </div>
         </div>
     </section>
-    <!------------------------------------------End Section Contact Us--------------------------------->
+    <!--End Section Contact Us-->
 
-    <!------------------------------------------Start Section Send massage------------------------------->
+    <!--Start Section Send massage-->
     <section class="send-massage">
         <div class="container">
             <h2>ارسل لنا رساله</h2>
@@ -373,5 +373,5 @@
             </form>
         </div>
     </section>
-    <!------------------------------------------End Section Send massage--------------------------------->
+    <!--End Section Send massage-->
 @endsection

@@ -1,5 +1,7 @@
 <template>
-	<div v-if="!loading">
+<div>
+	<spinner v-if="loading" size="big"></spinner>
+	<div v-else>
 		<form @submit.prevent="save">
 			<h1>{{action}} {{$route.params.model}}</h1>
 		  <div v-for="item in data.form" :key="item.name" class="form-group">
@@ -15,28 +17,34 @@
 			</div>
 			<div v-else-if="item.type == 'image'" class="form-group">
 			<input @change="onFileChange(item, $event)" type="file" accept="images/*" class="form-control-file">
+			<img :src="image" alt="">
 			</div>
 			<div v-if="errors[item.model]" class="invalid-feedback">{{errors[item.model][0]}}</div>
 		  </div>
 		  <button type="submit" class="btn btn-primary">Save</button>
 		</form>
 	</div>
+</div>
 </template>
 
 <script>
 import { get, post } from '../../helpers/api'
 import { VueEditor } from 'vue2-editor'
 import Pluralize from 'pluralize'
+import Spinner from 'vue-simple-spinner'
+
 
 export default {
 	components: {
-      VueEditor
+	  VueEditor,
+	  Spinner
    },
 	data() {
 		return {
 			data: [],
 			form: [],
 			errors: [],
+			image: null,
             loading: true,
             initializeURL: '',
             storeURL: '',
@@ -66,6 +74,9 @@ export default {
 			.then(response => {
 				this.data = response.data
 				this.loading = false;
+				this.setPreview(this.data.form[2])
+				
+				console.log(typeof this.data.form[2].value)
 			})
 		},
 		onFileChange(item, e) {
@@ -73,7 +84,26 @@ export default {
 			if (!files.length)
 				return;
 			item.value = files[0]
+			this.setPreview(item)
+
 		},
+		setPreview(item) {
+				if(item.value instanceof File ) {
+					console.log('sssssssss')
+					const fileReader = new FileReader()
+					fileReader.onload = (event) => {
+					  this.image = event.target.result
+					  //item.value = event.target.result
+					  
+					}
+					fileReader.readAsDataURL(item.value)
+				} else if (typeof item.value === 'string') {
+					console.log('aaaaaaaa')
+					this.image = `/images/${item.value}`
+				} else {
+					this.image = null
+				}
+			},
 		save() {
 			var form = new FormData()
 			this.data.form.forEach(input => {
@@ -89,7 +119,9 @@ export default {
                         + this.action.toLowerCase()
                         + 'ed successfully!', {type: 'success'})
 					this.$router.push('/dashboard/' + this.$route.params.model)
+					
 				}
+				console.log(response.data)
 			})
 			.catch(err => {
 				if(err.response.status === 422)
