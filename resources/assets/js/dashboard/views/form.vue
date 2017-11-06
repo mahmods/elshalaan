@@ -57,6 +57,9 @@ export default {
 	watch: {
 		'$route.params.model'() {
 			this.fetchForm()
+		},
+		'$route.params.id'() {
+			this.fetchForm()
 		}
 	},
 	methods: {
@@ -74,9 +77,9 @@ export default {
 			.then(response => {
 				this.data = response.data
 				this.loading = false;
-				this.setPreview(this.data.form[2])
-				
-				console.log(typeof this.data.form[2].value)
+				if(this.data.form[2]) {
+					this.setPreview(this.data.form[2])
+				}
 			})
 		},
 		onFileChange(item, e) {
@@ -89,7 +92,6 @@ export default {
 		},
 		setPreview(item) {
 				if(item.value instanceof File ) {
-					console.log('sssssssss')
 					const fileReader = new FileReader()
 					fileReader.onload = (event) => {
 					  this.image = event.target.result
@@ -98,7 +100,6 @@ export default {
 					}
 					fileReader.readAsDataURL(item.value)
 				} else if (typeof item.value === 'string') {
-					console.log('aaaaaaaa')
 					this.image = `/images/${item.value}`
 				} else {
 					this.image = null

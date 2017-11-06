@@ -27,9 +27,9 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <!-- Required CSS Files -->
-    <link href="{{asset('css/tornado-rtl.css')}}" rel="stylesheet">
-    <link href="{{asset('css/animations.css')}}" rel="stylesheet">
-    <link href="{{asset('css/theme.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/tornado-rtl.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/animations.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/theme.css')}}" rel="stylesheet">
     @stack('style')
 </head>
 
@@ -38,20 +38,19 @@
     <section class="navigation  sticky-navbar">
         <div class="container">
                 <div class=" logo">
-                    <a href="index.html"><img src="img/logo.png"></a>
+                    <a href="/"><img src="/img/logo.png"></a>
                 </div>
 
                     <nav class="navbar ">
                         <div class="navigation-menu scrollspy ">
                             <ul>
                                 <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">الرئيسيه</a></li>
-                                <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="about"> من نحن</a></li>
-                                <li class="{{ Request::is('services') ? 'active' : '' }}"><a href="services">خدماتنا </a></li>
-                                <li class="{{ Request::is('portfolio') ? 'active' : '' }}"><a href="portfolio">سابقة أعمالنا    </a></li>
-                                <li class="{{ Request::is('team') ? 'active' : '' }}"><a href="team">فريق العمل   </a></li>
-                                <li class="{{ Request::is('content') ? 'active' : '' }}"><a href="content">  المحتوي  </a></li>
-                                <li class="{{ Request::is('library') ? 'active' : '' }}"><a href="library"> المكتبة الالكترونية للاستثمار والتمويل   </a></li>
-                                <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="contact">اتصل بنا </a></li>
+                                <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="/about"> من نحن</a></li>
+                                <li class="{{ Request::is('services') ? 'active' : '' }}"><a href="/services">خدماتنا </a></li>
+                                <li class="{{ Request::is('portfolio') ? 'active' : '' }}"><a href="/portfolio">سابقة أعمالنا    </a></li>
+                                <li class="{{ Request::is('team') ? 'active' : '' }}"><a href="/team">فريق العمل   </a></li>
+                                <li class="{{ Request::is('library') ? 'active' : '' }}"><a href="/library"> المكتبة الالكترونية للاستثمار والتمويل   </a></li>
+                                <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="/contact">اتصل بنا </a></li>
                             </ul>
                         </div>
                     </nav>
@@ -86,7 +85,7 @@
                 <div class="copy col-s-12 col-m-6 col-l-6">
                     <p>جميع الحقوق محفوظه لمؤسسه الشعلان</p>
                 </div>
-                <div class="logo col-s-12 col-m-6 col-l-6 "><img src="img/mahacode.png"></div>
+                <div class="logo col-s-12 col-m-6 col-l-6 "><img src="/img/mahacode.png"></div>
 
             </div>
         </div>

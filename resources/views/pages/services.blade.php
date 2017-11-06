@@ -1,6 +1,6 @@
 @extends('layout.main')
 @push('style')
-<link href="css/services.css" rel="stylesheet">
+<link href="/css/services.css" rel="stylesheet">
 @endpush
 @section('content')
 
@@ -23,7 +23,7 @@
                 <div class="col-s-12 col-m-6 col-l-4">
                     <div class="serviece-block">
                         <span>
-                            <i><img src="/img/{{ $t->image }}"></i>
+                            <i><img src="/images/{{ $t->image }}"></i>
                         </span>
                         <h3>{{ $t->title }}</h3>
                         <p>{{ $t->content }}</p>
@@ -35,15 +35,4 @@
         </div>
     </section>
     <!--End Section serviece-->
-    <!-- Start Section Numbers-->
-    <section class="number">
-        <ul>
-            <li><a href="#">01</a></li>
-            <li><a href="#">02</a></li>
-            <li><a href="#">03</a></li>
-            <li><a href="#">04</a></li>
-            <li><a href="#">05</a></li>
-        </ul>
-    </section>
-    <!--End Section Numbers-->
 @endsection

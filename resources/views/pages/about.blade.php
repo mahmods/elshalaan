@@ -1,6 +1,6 @@
 @extends('layout.main')
 @push('style')
-<link href="css/about.css" rel="stylesheet">
+<link href="/css/about.css" rel="stylesheet">
 @endpush
 @section('content')
     <!--Start About Us-->
@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-s-12 col-m-4 col-l-3">
-                    <img src="img/logo3.png">
+                    <img src="/img/logo3.png">
                 </div>
                 <div class="col-s-12 col-m-8 col-l-9">
                     <h2>عن مؤسسه الشعلان</h2>
@@ -91,7 +91,7 @@
             @foreach ($team->items as $t)
                 <div class="col-s-12 col-m-6 col-l-3 team-block ">
                     <div class="img-block">
-                    <img src="/img/{{ $t->image }}">
+                    <img src="/images/{{ $t->image }}">
                     </div>
                     <div class="p-block">
                         <p>{{ $t->title }}</p>
