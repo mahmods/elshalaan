@@ -4,7 +4,7 @@
 			<h1 class="dashboard__sideBar--title">Dashboard</h1>
 			<div class="dashboard__sideBar--list">
 				<div v-for="m in menu" :key="m.name" class="dashboard__sideBar--list-item">
-					<router-link v-if="menuHasSingleItem(m)" :to="'/dashboard'+m.items[0].url"  class="dashboard__sideBar--list-item-title">{{m.items[0].text}}</router-link>
+					<router-link v-if="menuHasSingleItem(m)" :to="'/dashboard'+m.items[0].url" class="dashboard__sideBar--list-item-title">{{m.items[0].text}}</router-link>
 					<div v-else>
 						<h1 class="dashboard__sideBar--list-item-title">{{m.name}}</h1>
 						<router-link 
@@ -13,6 +13,9 @@
 						:to="'/dashboard'+item.url" 
 						class="dashboard__sideBar--list-item-link" >{{item.text}}</router-link>
 					</div>
+				</div>
+				<div class="dashboard__sideBar--list-item">
+					<h1 style="cursor: pointer;" class="dashboard__sideBar--list-item-title" @click="logout">Logout</h1>
 				</div>
 			</div>			
 		</div>
@@ -30,31 +33,37 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Permissions from '../store/Permissions'
+import { get, post } from '../helpers/api'
 export default {
 	data() {
 		return {
-			permissions: Permissions.state,
-			menu: []
+			menu: [],
+			api_token: '',
 		}
 	},
 	created() {
-		axios({
-			method: 'GET',
-			url: '/api/menu',
-			headers: {
-				'Authorization': `Bearer ${this.$auth.getToken()}`
-			}
-		}).then(response => this.menu = response.data.menu)
+		this.fetchMenu()
 	},
 	methods: {
-		menuHasSingleItem: (m) => {
+		fetchMenu() {
+			get('menu')
+			.then(response => this.menu = response.data.menu)
+		},
+		menuHasSingleItem(m) {
 			if(m.items.length == 1 )
 			{
 				return true;
 			}
 			return false;
+		},
+		logout() {
+			get('logout')
+			.then(response => {
+				if(response.data.success) {
+					this.$auth.destroy()
+					this.$router.go({path: 'dashboard/login',force: true})
+				}
+			})
 		}
 	}
 }

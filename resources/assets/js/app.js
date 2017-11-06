@@ -4,7 +4,7 @@ import router from './router/index'
 import Auth from './store/Auth'
 import Toasted from 'vue-toasted';
 
-import App from './components/app'
+import App from './app.vue'
 
 Vue.use(VueRouter)
 Vue.use(Auth)

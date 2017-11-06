@@ -31,7 +31,12 @@ export default {
             },
             error: null
 		}
-	},
+    },
+    created() {
+        if(this.$auth.getToken()) {
+            this.$router.push('/dashboard')
+        }
+    },
 	methods: {
 		login() {
 			axios({
@@ -42,8 +47,7 @@ export default {
 			.then(response => {
 				if(response.data.authenticated) {
                     this.$auth.setAuth(response.data.api_token, response.data.user_id)
-                    this.$router.push('/dashboard')
-
+                    this.$router.go({path: 'dashboard',force: true})
                 } else {
                     this.error = "Your email or password is wrong."
                 }

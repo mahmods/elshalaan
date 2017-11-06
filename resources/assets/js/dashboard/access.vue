@@ -22,7 +22,7 @@
 
 <script>
 import axios from 'axios'
-import Permissions from '../../store/Permissions'
+import Permissions from '../store/Permissions'
 export default {
 	data() {
 		return {

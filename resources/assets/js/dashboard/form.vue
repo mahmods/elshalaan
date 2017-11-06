@@ -28,7 +28,7 @@
 </template>
 
 <script>
-import { get, post } from '../../helpers/api'
+import { get, post } from '../helpers/api'
 import { VueEditor } from 'vue2-editor'
 import Pluralize from 'pluralize'
 import Spinner from 'vue-simple-spinner'

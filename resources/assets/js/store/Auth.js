@@ -22,3 +22,7 @@ export default function (Vue) {
 }
 
 export const api_token = localStorage.getItem('api_token')
+export function destroy () {
+    localStorage.removeItem('api_token')
+    localStorage.removeItem('user_id')
+}
