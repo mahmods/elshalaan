@@ -1345,16 +1345,19 @@
      border: 1px solid rgba(0, 0, 0, 0.14);
  }
  
- .send-massage .icon a {
+ .send-massage .icon a, #contact button {
      font-size: 14px;
      color: #474747;
      position: absolute;
      bottom: 20px;
      left: 38px;
-     font-weight: 400
+     font-weight: 400;
+     border: 0;
+     background: 0;
+     cursor: pointer;
  }
  
- .send-massage .icon a:hover {
+ .send-massage .icon a, #contact button:hover {
      color: #04abd0;
  }
  /********************************End Section Send massage***********************/

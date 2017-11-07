@@ -32,6 +32,10 @@
         {
             "type": "path",
             "url": "../MahaCMS/packages/MahaCMS/Users"
+        },
+        {
+            "type": "path",
+            "url": "../MahaCMS/packages/MahaCMS/CRUD"
         }
     ],
     "require": {
@@ -39,7 +43,8 @@
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
-        "mahacms/mahacms": "^1.0"
+        "mahacms/mahacms": "^1.0",
+        "doctrine/dbal": "2.*"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

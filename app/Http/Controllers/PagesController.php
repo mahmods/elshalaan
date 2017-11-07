@@ -27,6 +27,11 @@ class PagesController extends Controller
             ]);
     }
 
+    public function contact()
+    {
+        return view('pages.contact');
+    }
+
     public function category($category) {
         if (!View::exists('pages.'.$category)) {
             abort(404);

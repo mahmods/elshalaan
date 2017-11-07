@@ -97,6 +97,7 @@
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/tornado.js')}}"></script>
     <script src="{{asset('js/script.js')}}"></script>
+    @stack('scripts')
 </body>
 
 </html>

@@ -11,12 +11,14 @@ import RolesList from '../dashboard/roles'
 import PostsList from '../dashboard/posts/index'
 import RolesPermissions from '../dashboard/rolesPermissions'
 import form from '../dashboard/form'
+import Inbox from '../dashboard/inbox'
 
 export default [
 	{
         path: '/dashboard', component: Dashboard,   
         children: [
             { path: '/', component: PostsList, meta: { requiresAuth: true } },
+            { path: 'inbox', component: Inbox },
             { path: 'login', component: Login },
             { path: 'register', component: Register },
             { path: 'settings', component: Settings, meta: { requiresAuth: true } },
