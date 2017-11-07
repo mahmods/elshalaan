@@ -14,7 +14,7 @@
 						class="dashboard__sideBar--list-item-link" >{{item.text}}</router-link>
 					</div>
 				</div>
-				<div class="dashboard__sideBar--list-item">
+				<div v-show="this.$auth.getToken() != null" class="dashboard__sideBar--list-item">
 					<h1 style="cursor: pointer;" class="dashboard__sideBar--list-item-title" @click="logout">Logout</h1>
 				</div>
 			</div>			
@@ -84,7 +84,7 @@ export default {
 		overflow-y: scroll;
 		top: 0;
 		bottom: 0;
-		background: #282c37;
+		background: #232730;
 		flex-basis: 300px;
 		padding: 30px;
 		display: flex;
@@ -93,7 +93,7 @@ export default {
 	}
 
 	.dashboard__sideBar--title {
-		color: #fff;
+		color: #fafafc;
 		font-size: 2.5em;
 		padding: 0 10px;
 	}
@@ -109,12 +109,12 @@ export default {
 	}
 
 	.dashboard__sideBar--list-item-title {
-		color: #fff;
+		color: #fafafc;
 		font-size: 1.5em;
 	}
 
 	.dashboard__sideBar--list-item-link {
-		color: #6a7583;
+		color: #a3aab4;
 		font-size: 1.2em;
 		padding-left: 10px;
 	}
