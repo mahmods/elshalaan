@@ -22,7 +22,7 @@
                     </div>
                     <div class="p-block">
                         <p>{{ $t->title }}</p>
-                        <p>{{ $t->content }}</p>
+                        <p>{{ $t->description }}</p>
                     </div>
                 </div>
             @endforeach

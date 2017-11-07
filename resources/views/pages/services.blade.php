@@ -26,7 +26,7 @@
                             <i><img src="/images/{{ $t->image }}"></i>
                         </span>
                         <h3>{{ $t->title }}</h3>
-                        <p>{{ $t->content }}</p>
+                        <p>{{ $t->description }}</p>
 
                     </div>
                 </div>
