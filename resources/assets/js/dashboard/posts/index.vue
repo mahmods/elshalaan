@@ -1,5 +1,6 @@
 <template>
 	<div v-if="!loading">
+		<input type="text" name="" id="" v-model="search">
         <table class="table">
             <thead>
                 <tr>
@@ -12,15 +13,15 @@
                 </tr>
             </thead>
             <tbody>
-                <tr v-for="item in this.data.items" :key="item.id">
+                <tr v-for="item in filteredData" :key="item.id">
                     <td>{{item.id}}</td>
                     <td>{{item.title}}</td>
                     <td>{{item.description}}</td>
                     <td>{{item.category.name}}</td>
                     <td>{{item.created_at}}</td>
 					<td>
-						<router-link class="btn btn-primary" :to="'/dashboard/posts/' +item.id+'/update'">Edit</router-link>
-						<button class="btn btn-danger" v-on:click="remove(item.id)">Delete</button>
+						<router-link class="btn btn-primary" :to="'/dashboard/posts/' +item.id+'/update'"><icon name="pencil"></icon></router-link>
+						<button class="btn btn-danger" v-on:click="remove(item.id)"><icon name="trash"></icon></button>
 					</td>
                 </tr>
             </tbody>
@@ -34,7 +35,16 @@ export default {
 	data() {
 		return {
 			data: [],
-			loading: true
+			loading: true,
+			search: ''
+		}
+	},
+	computed: {
+		filteredData: function () {
+			const exp = new RegExp(this.search, 'i')
+			return this.data.items.filter(item => {
+				return ( exp.test(item.id) || exp.test(item.title) || exp.test(item.category.name) || exp.test(item.category.description))
+			})
 		}
 	},
 	mounted() {

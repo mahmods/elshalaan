@@ -40,7 +40,7 @@
 @section('content')
 
 <!--Start Section Map-->
-    <div data-src="img/map.png" style="width: 100%; height: 500px;"></div>
+    <div data-src="images/map.png" style="width: 100%; height: 500px;"></div>
 <!--End Section Map-->
 
 

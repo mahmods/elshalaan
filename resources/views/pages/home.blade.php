@@ -1,10 +1,45 @@
 @extends('layout.main')
+
+@push('scripts')
+<script type='text/javascript'>
+    $("#contact").submit(function(event) {
+        event.preventDefault();
+        $("#success").hide()
+        $("#fail").hide()
+        $.ajax({
+            type: "POST",
+            url: '/api/CRUD/contactus',
+            headers: {
+                "Authorization": "Bearer " + localStorage.getItem('api_token')
+            },
+            data: { 
+                name: $('#name').val(),
+                email: $('#email').val(),
+                phone: $('#phone').val(),
+                message: $('#message').val()
+            },
+            success: function (data){
+                console.log(data)
+                if(data.success) {
+                    $("#success").show()
+                } else {
+                    $("#fail").show()
+                }
+            },
+            fail: function () {
+                $("#fail").show()
+            }
+        });
+    });
+</script>
+@endpush
+
 @section('content')
     <!--Start Section Header-->
     <section id="Header" class="header">
         <div class="container">
             <div class="logo2 wow fadeInLeft" data-wow-delay="1s">
-                <img src="/img/logo2.png">
+                <img src="/iamges/logo2.png">
             </div>
         </div>
     </section>
@@ -204,26 +239,35 @@
 
     <!--Start Section Send massage-->
     <section class="send-massage">
-        <div class="container">
-            <h2>ارسل لنا رساله</h2>
-            <form>
-                <div class="row">
-                    <div class="col-s-12 col-m-6 col-l-4">
-                        <input type="text" placeholder=" الاسم: ">
-                    </div>
-                    <div class="col-s-12 col-m-6 col-l-4">
-                        <input type="text" placeholder=" البريد الإلكترونى :">
-                    </div>
-                    <div class="col-s-12 col-m-12 col-l-4">
-                        <input type="text" placeholder="رقم الهاتف :">
-                    </div>
-                    <div class="col-s-12 icon">
-                        <textarea placeholder="  الرساله :  "></textarea>
-                        <a href="#">إرسال</a>
-                    </div>
+    <div class="container">
+        <h2>ارسل لنا رساله</h2>
+        <form id="contact">
+            <div class="row">
+                <div class="col-s-12 col-m-6 col-l-4">
+                    <input id="name" type="text" placeholder=" الاسم: " required>
                 </div>
-            </form>
+                <div class="col-s-12 col-m-6 col-l-4">
+                    <input id="email" type="email" placeholder=" البريد الإلكترونى :" required>
+                </div>
+                <div class="col-s-12 col-m-12 col-l-4">
+                    <input id="phone" type="tel" placeholder="رقم الهاتف :">
+                </div>
+                <div class="col-s-12 icon">
+                    <textarea id="message" placeholder="  الرساله :  " required></textarea>
+                    <button type="submit">إرسال</button>
+                </div>
+            </div>
+        </form>
+        <br>
+        <div id="success" style="display: none;" class="alert success">
+            <strong> تم الإرسال</strong>
+            <span class="close-alert ti-clear"></span>
         </div>
-    </section>
+        <div id="fail" style="display: none;" class="alert danger">
+        <strong> حدث خطأ!</strong> أعد المحاولة لاحقاً
+            <span class="close-alert ti-clear"></span>
+        </div>
+    </div>
+</section>
     <!--End Section Send massage-->
 @endsection

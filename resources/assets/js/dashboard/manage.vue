@@ -11,8 +11,8 @@
                 <tr v-for="item in this.data.items" :key="item.id">
                     <td v-for="k in item" :key="k">{{k}}</td>
 					<td>
-						<router-link class="btn btn-primary" :to="'/dashboard/'+ $route.params.p + '/' +item.id+'/update'">Edit</router-link>
-						<button class="btn btn-danger" v-on:click="remove(item.id)">Delete</button>
+						<router-link class="btn btn-primary" :to="'/dashboard/'+ $route.params.p + '/' +item.id+'/update'"><icon name="pencil"></icon></router-link>
+						<button class="btn btn-danger" v-on:click="remove(item.id)"><icon name="trash"></icon></button>
 					</td>
                 </tr>
             </tbody>

@@ -38,7 +38,7 @@
     <section class="navigation  sticky-navbar">
         <div class="container">
                 <div class=" logo">
-                    <a href="/"><img src="/img/logo.png"></a>
+                    <a href="/"><img src="/images/logo.png"></a>
                 </div>
 
                     <nav class="navbar ">
@@ -85,7 +85,7 @@
                 <div class="copy col-s-12 col-m-6 col-l-6">
                     <p>جميع الحقوق محفوظه لمؤسسه الشعلان</p>
                 </div>
-                <div class="logo col-s-12 col-m-6 col-l-6 "><img src="/img/mahacode.png"></div>
+                <div class="logo col-s-12 col-m-6 col-l-6 "><img src="/images/mahacode.png"></div>
 
             </div>
         </div>

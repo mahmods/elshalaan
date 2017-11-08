@@ -16,7 +16,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-s-12 col-m-4 col-l-3">
-                    <img src="/img/logo3.png">
+                    <img src="/images/logo3.png">
                 </div>
                 <div class="col-s-12 col-m-8 col-l-9">
                     <h2>عن مؤسسه الشعلان</h2>

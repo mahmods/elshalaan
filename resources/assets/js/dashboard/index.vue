@@ -4,14 +4,23 @@
 			<h1 class="dashboard__sideBar--title">Dashboard</h1>
 			<div class="dashboard__sideBar--list">
 				<div v-for="m in menu" :key="m.name" class="dashboard__sideBar--list-item">
-					<router-link v-if="menuHasSingleItem(m)" :to="'/dashboard'+m.items[0].url" class="dashboard__sideBar--list-item-title">{{m.items[0].text}}</router-link>
+					<router-link v-if="menuHasSingleItem(m)" :to="'/dashboard'+m.items[0].url" class="dashboard__sideBar--list-item-title"><icon v-show="m.icon" :name="m.icon"></icon> {{m.items[0].text}}</router-link>
 					<div v-else>
-						<h1 class="dashboard__sideBar--list-item-title">{{m.name}}</h1>
-						<router-link 
-						v-for="item in m.items" 
-						:key="item.name" 
-						:to="'/dashboard'+item.url" 
-						class="dashboard__sideBar--list-item-link" >{{item.text}}</router-link>
+						
+						<h1 @click="toggleMenu(menu.indexOf(m))" class="dashboard__sideBar--list-item-title"><icon v-show="m.icon" :name="m.icon"></icon> {{m.name}}</h1>
+						<transition name="">
+							<div v-show="menu_state[menu.indexOf(m)]">
+							<router-link 
+							transition="slide-in-out"
+							
+							v-for="item in m.items" 
+							:key="item.text" 
+							:to="'/dashboard'+item.url" 
+							class="dashboard__sideBar--list-item-link" >{{item.text}}
+							
+							</router-link>
+							</div>
+						</transition>
 					</div>
 				</div>
 				<div v-show="this.$auth.getToken() != null" class="dashboard__sideBar--list-item">
@@ -38,6 +47,7 @@ export default {
 	data() {
 		return {
 			menu: [],
+			menu_state: [],
 			api_token: '',
 		}
 	},
@@ -47,7 +57,14 @@ export default {
 	methods: {
 		fetchMenu() {
 			get('menu')
-			.then(response => this.menu = response.data.menu)
+			.then(response => {
+				console.log(response.data)
+				this.menu = response.data.menu
+				this.menu.forEach(m => {
+					this.menu_state.push(false)
+				})
+			})
+			
 		},
 		menuHasSingleItem(m) {
 			if(m.items.length == 1 )
@@ -56,6 +73,9 @@ export default {
 			}
 			return false;
 		},
+		toggleMenu(id) {
+			this.$set(this.menu_state, id, !this.menu_state[id])
+        },
 		logout() {
 			get('logout')
 			.then(response => {
@@ -72,21 +92,25 @@ export default {
 <style>
 	body {
 		background: #f4f7fa;
+		font-size: 0.8rem;
 	}
 	
 	button {
 		cursor: pointer;
 	}
 
+	.form-control {
+		font-size: 0.8rem;
+	}
+
 	.dashboard__sideBar {
 		position: fixed;
-		width: 300px;
-		overflow-y: scroll;
+		width: 200px;
 		top: 0;
 		bottom: 0;
-		background: #232730;
+		background: #2F3640;
 		flex-basis: 300px;
-		padding: 30px;
+		padding: 20px;
 		display: flex;
 		flex-direction: column;
 		text-transform: capitalize;
@@ -94,23 +118,38 @@ export default {
 
 	.dashboard__sideBar--title {
 		color: #fafafc;
-		font-size: 2.5em;
-		padding: 0 10px;
+		font-size: 2.0em;
 	}
 
 	.dashboard__sideBar--list {
 		padding: 10px 10px;
 	}
 
+	.dashboard__sideBar--list-item {
+		margin: 10px 0;
+	}
+
 	.dashboard__sideBar--list-item div {
-		margin-bottom: 40px;
 		display: flex;
 		flex-direction: column;
 	}
 
 	.dashboard__sideBar--list-item-title {
-		color: #fafafc;
-		font-size: 1.5em;
+		color: #D5D6D4;
+		font-size: 1.2em;
+		cursor: pointer;
+	}
+
+	.dashboard__sideBar--list-item-title svg {
+		margin-right: 10px;
+	}
+
+	.collapse-enter-active, .collapse-leave-active {
+		transition: margin-top .2s
+	}
+
+	.collapse-enter, .collapse-leave-to {
+		margin-top: -50px;
 	}
 
 	.dashboard__sideBar--list-item-link {
@@ -128,17 +167,17 @@ export default {
 	}
 
 	.dashboard__content {
-		margin-left: 300px;
+		margin-left: 200px;
 		display: flex;
 		flex-direction: column;
 	}
 
 	.dashboard__content--header {
 		background: #fff;
-		padding: 50px;
+		padding: 20px;
 	}
 
 	.dashboard__content--container {
-		padding: 50px;
+		padding: 20px 50px;
 	}
 </style>
