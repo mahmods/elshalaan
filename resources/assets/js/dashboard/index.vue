@@ -32,8 +32,9 @@
 			<div class="dashboard__content--header">
 				<h1>Dashboard</h1>
 				<div>
-					<router-link to="/dashboard">Home</router-link><span v-if="$route.params.p">  /  </span>
-					<router-link v-if="$route.params.p" :to="'/dashboard/'+$route.params.p">{{$route.params.p}}</router-link>
+					<router-link to="/dashboard">Home</router-link><span v-if="$route.meta.model || $route.params.model">  /  </span>
+					<router-link v-if="$route.meta.model" :to="'/dashboard/'+$route.meta.model">{{$route.meta.model}}</router-link>
+					<router-link v-else-if="$route.params.model" :to="'/dashboard/'+$route.params.model">{{$route.params.model}}</router-link>
 				</div>
 			</div>
 			<router-view class="dashboard__content--container"></router-view>

@@ -6,18 +6,15 @@
 			<h1>{{action}} {{$route.params.model}}</h1>
 		  <div v-for="item in data.form" :key="item.name" class="form-group">
 		    <label>{{item.label}}</label>
-		    <!-- asdasd -->
-		    <input v-if="item.type == 'input'" v-model="item.value" :type="item.innerType" class="form-control" :class="errors[item.model] ? 'is-invalid' : ''" >
-			<vue-editor v-if="item.editor" v-model="item.value"></vue-editor>
-		    <textarea v-else-if="item.type == 'textarea'" v-model="item.value" class="form-control"></textarea>
-			<div v-else-if="item.type == 'select'" class="form-group">
-				<select class="form-control" v-model="item.value">
-					<option v-for="option in item.options" :key="option.id" :value="option.id">{{option.name}}</option>
-				</select>
-			</div>
-			<div v-else-if="item.type == 'image'" class="form-group">
-			<input @change="onFileChange(item, $event)" type="file" accept="images/*" class="form-control-file">
-			<img :src="image" alt="">
+		    <input v-if="item.type == 'input'" v-model="item.value" :type="item.innerType" class="form-control" :class="errors[item.model] ? 'is-invalid' : ''">
+			<vue-editor v-if="item.editor" v-model="item.value" class="form-control" :class="errors[item.model] ? 'is-invalid' : ''"></vue-editor>
+		    <textarea v-if="item.type == 'textarea' && !item.editor" v-model="item.value" class="form-control" :class="errors[item.model] ? 'is-invalid' : ''"></textarea>
+			<select v-if="item.type == 'select'" class="form-control" :class="errors[item.model] ? 'is-invalid' : ''" v-model="item.value">
+				<option v-for="option in item.options" :key="option.id" :value="option.id">{{option.name}}</option>
+			</select>
+			<div v-if="item.type == 'image'" class="form-control" :class="errors[item.model] ? 'is-invalid' : ''">
+				<input @change="onFileChange(item, $event)" type="file" accept="images/*" class="form-control-file">
+				<img :src="image" alt="">
 			</div>
 			<div v-if="errors[item.model]" class="invalid-feedback">{{errors[item.model][0]}}</div>
 		  </div>
@@ -125,8 +122,9 @@ export default {
 				console.log(response.data)
 			})
 			.catch(err => {
-				if(err.response.status === 422)
+				if(err.response.status === 422) {
 					this.errors = err.response.data.errors
+				}
 			})
         },
         capitalizeFirstLetter(string) {

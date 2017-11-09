@@ -65,7 +65,9 @@ export default {
 				data: this.profile
 			})
 			.then(response => {
-				this.$toasted.show('Changes saved!', {type: 'success'})
+				if(response.data.success) {
+					this.$toasted.show('Changes saved successfully!', {type: 'success'})
+				}
 			})
 		}
     }

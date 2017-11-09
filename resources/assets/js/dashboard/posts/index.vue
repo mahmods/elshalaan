@@ -1,6 +1,6 @@
 <template>
 	<div v-if="!loading">
-		<input type="text" name="" id="" v-model="search">
+		<div id="search-wrapper"><input type="text" id="search" v-model="search"></div>
         <table class="table">
             <thead>
                 <tr>
@@ -87,4 +87,48 @@ export default {
 	button {
 		cursor: pointer;
 	}
+
+	input:focus,
+	select:focus,
+	textarea:focus,
+	button:focus {
+		outline: none;
+	}
+
+	#search-wrapper {
+		display: flex;
+	}
+
+	#search {
+		margin: 20px auto;
+		align-self: center;
+		background: url('/images/search-dark.png') no-repeat 10px 15px #fcfcfc;
+		color: #6a6f75;
+		width: 400px;
+		-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+		-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+		text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+		border: 0 none;
+		font: bold 12px Arial,Helvetica,Sans-serif;
+		padding: 15px 15px 15px 35px;
+		-webkit-border-radius: 20px;
+		-moz-border-radius: 20px;
+		border-radius: 20px;
+		-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 3px rgba(0, 0, 0, 0.2) inset;
+		-webkit-transition: all 0.7s ease 0s;
+		-moz-transition: all 0.7s ease 0s;
+		-o-transition: all 0.7s ease 0s;
+		transition: all 0.7s ease 0s;
+		}
+
+	#search:focus {
+		color: #6a6f75;
+		width: 500px;
+		-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+		-moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+		box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1), 0 1px 0 rgba(0, 0, 0, 0.9) inset;
+		text-shadow: 0 2px 3px rgba(0, 0, 0, 0.1);
+		}
 </style>
