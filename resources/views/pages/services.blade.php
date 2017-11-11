@@ -7,7 +7,7 @@
     <!--Start About Us-->
     <section class="title">
         <div class="container">
-            <h2 class="right">خدماتنا  </h2>
+            <h2 class="right">{{$fields[0]->name}}</h2>
         </div>
     </section>
     <!--End About Us-->
@@ -19,7 +19,7 @@
 
             </div>
             <div class="row">
-            @foreach ($services->items as $t)
+            @foreach ($fields[0]->value->posts()->get() as $t)
                 <div class="col-s-12 col-m-6 col-l-4">
                     <div class="serviece-block">
                         <span>

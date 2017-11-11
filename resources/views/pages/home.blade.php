@@ -39,7 +39,7 @@
     <section id="Header" class="header">
         <div class="container">
             <div class="logo2 wow fadeInLeft" data-wow-delay="1s">
-                <img src="/iamges/logo2.png">
+                <img src="/images/logo2.png">
             </div>
         </div>
     </section>
@@ -141,7 +141,7 @@
                 </div>
             </div>
             <div class="row">
-            @foreach ($services->items as $t)
+            @foreach ($fields[0]->value->posts as $t)
                 <div class="col-s-12 col-m-6 col-l-4">
                     <div class="serviece-block">
                         <span>
@@ -162,9 +162,9 @@
 
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2>{{ $portfolio->name }} </h2>
+            <h2>{{ $fields[1]->name }} </h2>
             <div class="row carousel-slider2 tornado-ui">
-                @foreach ($portfolio->items as $t)
+                @foreach ($fields[1]->value->posts as $t)
                 <div class="col-s-12 col-m-6 col-l-4 portfolio-block ">
                     <div class="block">
                         <div class="img-block">
@@ -182,10 +182,10 @@
 
     <section id="ourTeam" class="our-team">
         <div class="container">
-            <h2>{{$team->name}}</h2>
+            <h2>{{$fields[2]->name}}</h2>
             <div class="row carousel-slider tornado-ui">
 
-            @foreach ($team->items as $t)
+            @foreach ($fields[2]->value->posts as $t)
             <div class="col-s-12 col-m-6 col-l-3 team-block ">
                     <div class="img-block">
                         <img src="/images/{{ $t->image }}">

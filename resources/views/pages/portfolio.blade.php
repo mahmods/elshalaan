@@ -6,7 +6,7 @@
     <!--Start About Us-->
     <section class="title">
         <div class="container">
-            <h2 class="right">{{$portfolio->name}}</h2>
+            <h2 class="right">{{$fields[0]->name}}</h2>
         </div>
     </section>
     <!--End About Us-->
@@ -15,13 +15,13 @@
     <section  class="portfolio">
         <div class="container">
             <div class="row ">
-            @foreach ($portfolio->items as $t)
+            @foreach ($fields[0]->value->posts()->get() as $post)
                 <div class="col-s-12 col-m-6 col-l-4 portfolio-block ">
                     <div class="block">
                         <div class="img-block">
-                            <img src="/images/{{ $t->image }}">
+                            <img src="/images/{{ $post->image }}">
                         </div>
-                        <p>{{ $t->description }}</p>
+                        <p>{{ $post->description }}</p>
                     </div>
                 </div>
             @endforeach

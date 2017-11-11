@@ -13,6 +13,10 @@ import RolesPermissions from '../dashboard/rolesPermissions'
 import form from '../dashboard/form'
 import Inbox from '../dashboard/inbox'
 
+
+import Pages from '../dashboard/pages/index'
+import PageCreate from '../dashboard/pages/create'
+
 export default [
 	{
         path: '/dashboard', component: Dashboard,   
@@ -21,6 +25,10 @@ export default [
             { path: 'inbox', component: Inbox, meta: { requiresAuth: true, model: 'Inbox' }},
             { path: 'login', component: Login },
             { path: 'register', component: Register },
+            
+            { path: 'pages', component: Pages, meta: { requiresAuth: true, model: 'Pages' }},
+            { path: 'pages/create', component: PageCreate, meta: { requiresAuth: true, model: 'Pages' }},
+            
             { path: 'settings', component: Settings, meta: { requiresAuth: true, model: 'Settings' }},
             { path: 'profile', component: Profile, meta: { requiresAuth: true, model: 'Profile' }},
             { path: 'posts', component: PostsList, meta: { requiresAuth: true, model: 'Posts' }},
