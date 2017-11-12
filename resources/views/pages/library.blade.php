@@ -6,7 +6,7 @@
     <!--Start About Us-->
     <section class="title">
         <div class="container">
-            <h2 class="right">{{$library->name}}</h2>
+            <h2 class="right">{{$fields[0]->name}}</h2>
         </div>
     </section>
     <!--End About Us-->
@@ -15,7 +15,7 @@
     <section id="library" class="library">
         <div class="container">
             <div class="row ">
-            @foreach ($library->items as $t)
+            @foreach ($fields[0]->value->posts as $t)
                 <div class="col-s-12 col-m-6 col-l-4 ">
                     <div class="library-block">
                         <div class="img-block"><img src="/images/{{ $t->image }}"></div>

@@ -23,10 +23,12 @@
         "slick-carousel": "^1.8.1",
         "vue": "^2.5.2",
         "vue-awesome": "^2.3.4",
+        "vue-draggable": "^1.0.0-rc.3",
         "vue-router": "^3.0.1",
         "vue-simple-spinner": "^1.2.8",
         "vue-toasted": "^1.1.22",
         "vue2-editor": "^2.0.26",
+        "vuedraggable": "^2.15.0",
         "wowjs": "^1.1.3"
     }
 }

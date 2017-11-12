@@ -11,6 +11,14 @@ return [
                     'text' => 'Inbox',
                     'link' => '/inbox',
                 ],
+                [
+                    'text' => 'Navigation',
+                    'link' => '/nav'
+                ],
+                [
+                    'text' => 'Pages',
+                    'link' => '/pages'
+                ]
             ],
         ],
     ],

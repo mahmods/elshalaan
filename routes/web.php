@@ -14,12 +14,27 @@ Route::get('dashboard/{all}', function () {
 })->where('all', '^((?!api).)*');
 
 Route::get('/', 'PagesController@home');
-Route::get('/about', 'PagesController@about');
 Route::get('/contact', 'PagesController@contact');
 Route::get('/content/{id}', 'PagesController@content');
 
 //Route::get('/{category}', 'PagesController@category');
 
+Route::get('/', function() {
+    $page = Page::where('slug', 'home')->first();
+    $fields = [];
+    for ($i=0; $i < count($page->fields); $i++) { 
+        $f = new Field();
+        $f->name($page->fields[$i]->name);
+        $f->value($page->fields[$i]->value);
+        if($page->fields[$i]->category) {
+            $category = Category::where('slug', $page->fields[$i]->category)->first();
+            $f->name($category->name);
+            $f->value($category);
+        }
+        array_push($fields, $f);
+    }
+    return view('pages.' . $page->view, ['fields' => $fields]);
+});
 
 Route::get('/{slug}', function($slug) {
     $page = Page::where('slug', $slug)->first();
@@ -38,8 +53,7 @@ Route::get('/{slug}', function($slug) {
         }
         array_push($fields, $f);
     }
-    dd($page->fields);
-    return view('pages.' . $page->view->name, ['fields' => $fields]);
+    return view('pages.' . $page->view, ['fields' => $fields]);
 });
 
 class Field {

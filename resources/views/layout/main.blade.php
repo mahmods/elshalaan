@@ -1,3 +1,6 @@
+@php
+    $nav = DB::table('nav')->get();//->orderBy('order', 'asc')->get();
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,13 +47,9 @@
                     <nav class="navbar ">
                         <div class="navigation-menu scrollspy ">
                             <ul>
-                                <li class="{{ Request::is('/') ? 'active' : '' }}"><a href="/">الرئيسيه</a></li>
-                                <li class="{{ Request::is('about') ? 'active' : '' }}"><a href="/about"> من نحن</a></li>
-                                <li class="{{ Request::is('services') ? 'active' : '' }}"><a href="/services">خدماتنا </a></li>
-                                <li class="{{ Request::is('portfolio') ? 'active' : '' }}"><a href="/portfolio">سابقة أعمالنا    </a></li>
-                                <li class="{{ Request::is('team') ? 'active' : '' }}"><a href="/team">فريق العمل   </a></li>
-                                <li class="{{ Request::is('library') ? 'active' : '' }}"><a href="/library"> المكتبة الالكترونية للاستثمار والتمويل   </a></li>
-                                <li class="{{ Request::is('contact') ? 'active' : '' }}"><a href="/contact">اتصل بنا </a></li>
+                            @foreach ($nav as $n)
+                                <li class="{{ Request::is($n->url) ? 'active' : '' }}"><a href="/{{$n->url}}">{{$n->name}}</a></li>
+                            @endforeach
                             </ul>
                         </div>
                     </nav>

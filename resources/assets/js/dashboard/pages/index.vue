@@ -13,9 +13,9 @@
                 <tr v-for="item in data" :key="item.id">
                     <td>{{item.id}}</td>
                     <td>{{item.slug}}</td>
-                    <td>{{item.view_id}}</td>
+                    <td>{{item.view}}</td>
 					<td>
-						<router-link class="btn btn-primary" :to="'/dashboard/posts/' +item.id+'/update'"><icon name="pencil"></icon></router-link>
+						<router-link class="btn btn-primary" :to="'/dashboard/pages/' +item.id+'/update'"><icon name="pencil"></icon></router-link>
 						<button class="btn btn-danger" v-on:click="remove(item.id)"><icon name="trash"></icon></button>
 					</td>
                 </tr>
@@ -49,6 +49,20 @@ export default {
 			.then(response => {
 				this.data = response.data
 				this.loading = false;
+			})
+		},
+		remove(id) {
+			axios({
+				method: 'DELETE',
+				url: '/api/pages/' + id,
+				headers: {
+					'Authorization': 'Bearer ' + this.$auth.getToken()
+				}
+			})
+			.then(response => {
+				if(response.data.success) {
+					this.getData();
+				}
 			})
 		}
     },

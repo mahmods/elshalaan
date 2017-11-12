@@ -63,12 +63,19 @@ export default {
         }
     },
     created() {
-        get('pages/create')
+        get('pages/' + this.$route.params.id + '/edit')
         .then(response => {
             this.views = response.data.views
             this.categories = response.data.categories
-            this.form.fields.push({name:'', value:'', category:''})
-            this.fields_type.push('text')
+            this.form = response.data.form
+            this.form.fields = response.data.fields
+            this.form.fields.forEach(f => {
+                if (f.category == '') {
+                    this.fields_type.push('text')
+                } else {
+                    this.fields_type.push('category')
+                }
+            })
         })
     },
     methods: {
@@ -77,7 +84,7 @@ export default {
             this.fields_type.push('text')
         },
         save() {
-            post('pages', this.form)
+            post('pages/' + this.$route.params.id + '?_method=PUT', this.form)
             .then(response => {
                 console.log(response.data)
             })

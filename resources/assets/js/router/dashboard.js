@@ -16,6 +16,9 @@ import Inbox from '../dashboard/inbox'
 
 import Pages from '../dashboard/pages/index'
 import PageCreate from '../dashboard/pages/create'
+import PageEdit from '../dashboard/pages/edit'
+
+import Nav from '../dashboard/nav'
 
 export default [
 	{
@@ -26,8 +29,11 @@ export default [
             { path: 'login', component: Login },
             { path: 'register', component: Register },
             
+            { path: 'nav', component: Nav, meta: { requiresAuth: true, model: 'Pages' }},
+
             { path: 'pages', component: Pages, meta: { requiresAuth: true, model: 'Pages' }},
             { path: 'pages/create', component: PageCreate, meta: { requiresAuth: true, model: 'Pages' }},
+            { path: 'pages/:id/update', component: PageEdit, meta: { requiresAuth: true, model: 'Pages' }},
             
             { path: 'settings', component: Settings, meta: { requiresAuth: true, model: 'Settings' }},
             { path: 'profile', component: Profile, meta: { requiresAuth: true, model: 'Profile' }},
@@ -40,6 +46,8 @@ export default [
             { path: ':model/:id/update', component: form, meta: {mode: 'edit', requiresAuth: true} },
             { path: ':model', component: AccessForm, meta: { requiresAuth: true } },
             { path: ':model/manage', component: ManageForm, meta: { requiresAuth: true } },
+
+
     	]
     }
 ]
