@@ -14,7 +14,7 @@
           </div>
           <div class="form-group">
 		    <label>Fields</label>
-              <button @click.prevent="addField">add field</button>
+              <button class="btn btn-primary btn-sm" @click.prevent="addField">+</button>
             <div v-for="field in form.fields" :key="form.fields.indexOf(field)">
                 <div class="form-check form-check-inline">
                 <label class="form-check-label">
@@ -42,7 +42,8 @@
                 </div>
             </div>
           </div>
-          <button type="submit">Save</button>
+          <div v-show="errors.message" class="alert alert-danger" role="alert">{{errors.message}}</div>
+          <button class="btn btn-primary" type="submit">Save</button>
       </form>
   </div>
 </template>
@@ -59,7 +60,8 @@ export default {
                 view: '',
                 fields: []
             },
-            fields_type: []
+            fields_type: [],
+            errors: []
         }
     },
     created() {
@@ -86,7 +88,13 @@ export default {
         save() {
             post('pages/' + this.$route.params.id + '?_method=PUT', this.form)
             .then(response => {
-                console.log(response.data)
+                if (response.data.success) {
+                    this.errors = []
+                    this.$toasted.show('Page updated successfully', {type: 'success'})
+                    this.$router.push('/dashboard/pages')
+                }
+            }).catch(err => {
+                this.errors = err.response.data
             })
         }
     }

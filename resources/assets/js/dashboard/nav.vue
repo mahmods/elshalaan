@@ -20,7 +20,10 @@
       </draggable>
       <div class="list-group-item add" style="cursor: pointer;" @click="add">+</div>
     </div>
+    <div class="col pt-2">
+        <div v-show="errors.message" class="alert alert-danger" role="alert">{{errors.message}}</div>
       <button class="btn btn-primary" @click.prevent="save">Save</button>
+    </div>
   </div>
 </template>
 
@@ -34,6 +37,7 @@ export default {
     data() {
         return {
             nav: [],
+            errors: []
         }
     },
     created() {
@@ -45,7 +49,18 @@ export default {
     methods: {
         save() {
             post('nav', this.nav)
-            .then(response => console.log(response.data))
+            .then(response => {
+                console.log(response.data)
+                if (response.data.success) {
+                    this.errors = []
+                    this.$toasted.show('Changes saved successfully', {type: 'success'})
+                }
+            }).catch(err => {
+                console.log(err.response.data)
+                if(err.response.status === 422) {
+					this.errors = err.response.data
+				}
+            })
         },
         add() {
             this.nav.push({
@@ -80,8 +95,8 @@ export default {
     cursor: move;
 }
 .add {
-    color: #ccc;
-    font-size: 1.1rem;
+    color: #606060;
+    font-size: 1.3rem;
     display: flex;
     justify-content: center;
 }
