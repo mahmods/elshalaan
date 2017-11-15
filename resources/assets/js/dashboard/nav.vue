@@ -1,9 +1,12 @@
 <template>
   <div>
+      <spinner v-if="loading" size="big"></spinner>
+      <div v-else>
+
     <div class="col">
-        <draggable class="list-group" element="ul" v-model="nav" @start="isDragging=true" @end="isDragging=false"> 
+        <draggable class="list-group" element="ul" v-model="nav.items" @start="isDragging=true" @end="isDragging=false"> 
           <transition-group type="transition" :name="'flip-list'">
-            <li class="list-group-item" v-for="element in nav" :key="nav.indexOf(element)">
+            <li class="list-group-item" v-for="element in nav.items" :key="nav.items.indexOf(element)">
                 <div class="form-row">
                     <div class="col">
                         <input class="form-control" placeholder="Name" type="text" v-model="element.name" required>
@@ -12,7 +15,7 @@
                         <input class="form-control" placeholder="Url" type="text" v-model="element.url" required>
                     </div>
                     <div class="col">
-                        <button class="btn btn-danger btn-sm" @click="remove(nav.indexOf(element))">X</button>
+                        <button class="btn btn-danger btn-sm" @click="remove(nav.items.indexOf(element))">X</button>
                     </div>
                 </div>
             </li> 
@@ -23,6 +26,7 @@
     <div class="col pt-2">
         <div v-show="errors.message" class="alert alert-danger" role="alert">{{errors.message}}</div>
       <button class="btn btn-primary" @click.prevent="save">Save</button>
+    </div>
     </div>
   </div>
 </template>
@@ -36,14 +40,18 @@ export default {
     },
     data() {
         return {
-            nav: [],
-            errors: []
+            nav: {
+                items:[]
+            },
+            errors: [],
+            loading: true
         }
     },
     created() {
         get('nav')
         .then(response => {
-            this.nav = response.data
+            this.nav.items = response.data
+            this.loading = false
         })
     },
     methods: {
@@ -63,13 +71,13 @@ export default {
             })
         },
         add() {
-            this.nav.push({
+            this.nav.items.push({
                 name: '',
                 url: ''
             })
         },
         remove(id) {
-            this.nav.splice(id, 1)
+            this.nav.items.splice(id, 1)
         }
     }
 }

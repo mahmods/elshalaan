@@ -66,6 +66,9 @@ export default {
 					this.getData();
 				}
 			})
+			.catch(err => {
+				this.$toasted.show(err.response.data.error, {type: 'error'})
+			})
 		}
     },
 }

@@ -2,7 +2,8 @@
 	<div class="dashboard">
 		<div class="dashboard__sideBar">
 			<h1 class="dashboard__sideBar--title">Dashboard</h1>
-			<div class="dashboard__sideBar--list">
+			<spinner v-if="loading" size="big"></spinner>
+			<div v-else class="dashboard__sideBar--list">
 				<div v-for="m in menu" :key="m.name" class="dashboard__sideBar--list-item">
 					<router-link v-if="menuHasSingleItem(m)" :to="'/dashboard'+m.items[0].url" class="dashboard__sideBar--list-item-title"><icon v-show="m.icon" :name="m.icon"></icon> {{m.items[0].text}}</router-link>
 					<div v-else>
@@ -49,7 +50,7 @@ export default {
 		return {
 			menu: [],
 			menu_state: [],
-			api_token: '',
+			loading: true
 		}
 	},
 	created() {
@@ -64,7 +65,9 @@ export default {
 				this.menu.forEach(m => {
 					this.menu_state.push(false)
 				})
+				this.loading = false
 			})
+			.catch(err => this.loading = false)
 			
 		},
 		menuHasSingleItem(m) {

@@ -11,7 +11,7 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="description" content="A Description Of The Project">
     <meta name="keywords" content="The keywords">
-    <title>مؤسسة شعلان</title>
+    <title>{{$settings['appname']}}</title>
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
     <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
     <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">

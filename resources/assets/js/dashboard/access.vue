@@ -1,5 +1,6 @@
 <template>
-	<div>
+<spinner v-if="loading" size="big"></spinner>
+	<div v-else>
         <table class="table">
             <thead>
                 <tr>
@@ -27,7 +28,8 @@ export default {
 	data() {
 		return {
 			data: [],
-			permissions: null
+			permissions: null,
+			loading: true
 		}
 	},
 	created() {
@@ -36,6 +38,7 @@ export default {
 	},
 	watch: {
 		'$route.params.model'() {
+			this.loading = true
 			this.getData()
 		}
 	},
@@ -50,6 +53,7 @@ export default {
 			})
 			.then(response => {
 				this.data = response.data
+				this.loading = false
 			})
 		},
 		remove(id) {

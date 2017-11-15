@@ -36,10 +36,12 @@ export default {
 
 <style>
 .message {
+    font-size: 1rem;
     display: flex;
     flex-direction: column;
     padding: 30px;
-    background-color: #a3aab4;
-    margin: 10px 20px;
+    background-color: #fff;
+    margin: 20px 20px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 </style>

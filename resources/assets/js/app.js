@@ -5,10 +5,12 @@ import Auth from './store/Auth'
 import Toasted from 'vue-toasted';
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
+import Spinner from 'vue-simple-spinner'
 
 import App from './app.vue'
 
 Vue.component('icon', Icon)
+Vue.component('spinner', Spinner)
 
 Vue.use(VueRouter)
 Vue.use(Auth)

@@ -55,30 +55,30 @@
                         <div class="icon-block"><i class="ti-ios-time-line"></i></div>
                         <div class="icon-content">
                             <h3>ساعات العمل الرسميه</h3>
-                            <p>السبت - الخميس</p>
-                            <span>9:00ص - 5:00م</span>
+                            <p>{{$settings['work_days']}}</p>
+                            <span>{{$settings['work_hours']}}</span>
                         </div>
                     </div>
                     <div class="icon col-s-12 col-m-6 col-l-3">
                         <div class="icon-block"><i class="ti-phone"></i></div>
                         <div class="icon-content">
                             <h3>تواصل معنا</h3>
-                            <p> 0020102598532158 </p>
-                            <span>info@el-shalaan.com</span>
+                            <p> {{$settings['phone1']}} </p>
+                            <span>{{$settings['email1']}}</span>
                         </div>
                     </div>
                     <div class="icon col-s-12 col-m-6 col-l-4">
                         <div class="icon-block"><i class="ti-place"></i></div>
                         <div class="icon-content">
-                            <h3> المركز الرئيسي للشركة ( القاهرة ) </h3>
-                            <p> فروع الشركة ( بني سويف ) </p>
-                            <span>فروع تحت التأسيس ( اسكندرية – أسيوط ) </span>
+                            <h3>{{$settings['address1']}}</h3>
+                            <p> {{$settings['address2']}}</p>
+                            <span>{{$settings['address3']}} </span>
                         </div>
                     </div>
                     <div class=" col-s-12 col-m-6 col-l-2 ">
                         <div class="message">
                             <span class="button">
-                            <a  href="#Contact-us">ارسل لنا رساله  </a>  
+                            <a  href="/contact">ارسل لنا رساله  </a>  
                         </span>
                         </div>
                     </div>
@@ -96,26 +96,18 @@
 
                 <div class=" col-s-12 col-m-12  col-l-7">
                     <div class="abut-block">
-                        <h2>عن مؤسسه الشعلان</h2>
-                        <p>
-                            لقد اثرت التطورات الاقتصادية السريعة والمتلاحقة علي قرارات العديد من المستثمرين سواء علي مستوي الأسواق المحلية او علي مستوي الأسواق الإقليمية وكان لزاما علينا ايمانا منا بدور المستثمرين في التنمية الاقتصادية الشاملة للمجتمعات ان نقوم بتكريس مجموعة من الخبراء والمستشارين الاقتصاديين للوقوف علي هذه المتغيرات ودراسة سلوكها وتاثيراتها علي قرارات المستثمر
-                            <br> <br>لذا ومن اجل قرار استثماري رشيد قائم علي أسس علمية واقتصادية واقعية قامت الشعلان للإستشارات الرائدة فى مجالات دراسات الجدوى و خطط الأعمال في مصر ودول الخليج العربي بما لديها من موارد بشرية خبيرة في القطاعات الاقتصادية المختلفة الصناعية والتجارية والزراعية والخدمية والعقارية بتدشين اكبر فريق استشاري في مصر والشرق الأوسط ويساند مؤسسة الشعلان من الظهير التسويقي شركة مها كود للبرمجيات والتسويق الالكتروني  .
-
-                        </p>
+                        <h2>{{$fields[0]->name}}</h2>
+                        <p>{{$fields[0]->value}}</p>
                     </div>
                 </div>
                 <div class="col-s-12 col-m-12 col-l-5">
                     <div class="abut-block-1">
-                        <h3>رؤيتنا</h3>
-                        <p>
-                            الريادة في مجال الاستشارات الاقتصادية والمرجع الأفضل على مستوى الوطن العربي لتقديم الحلول والاستشارات الاقتصادية المتطورة طبقا لأحدث الأساليب والأدوات العلمية .
-                        </p>
+                        <h3>{{$fields[1]->name}}</h3>
+                        <p>{{$fields[1]->value}}</p>
                     </div>
                     <div class="abut-block-2">
-                        <h3>رسالتنا</h3>
-                        <p>
-                            تعزيز القرار الاستثماري لرجال الاعمال واتخاذ القرار الرشيد طبقا لحقائق مجتمع الاعمال
-                        </p>
+                        <h3>{{$fields[2]->name}}</h3>
+                        <p>{{$fields[2]->value}}</p>
                     </div>
                     <div class="abut-block-3">
                         <h3>الشعلان طبيب المستثمر</h3>
@@ -132,7 +124,7 @@
         <div class="container">
             <div class="row">
                 <div class="head col-s-12 col-m-6">
-                    <h2>خدماتنا</h2>
+                    <h2>{{ $fields[3]->name }}</h2>
                     <!--
                     <p>
                         هذا النص هو مثال لنص يمكن أن يستبدل في نفس المساحة، لقد تم توليد هذا النص من مولد النص العربى،
@@ -141,7 +133,7 @@
                 </div>
             </div>
             <div class="row">
-            @foreach ($fields[0]->value->posts as $t)
+            @foreach ($fields[3]->value->posts as $t)
                 <div class="col-s-12 col-m-6 col-l-4">
                     <div class="serviece-block">
                         <span>
@@ -162,9 +154,9 @@
 
     <section id="portfolio" class="portfolio">
         <div class="container">
-            <h2>{{ $fields[1]->name }} </h2>
+            <h2>{{ $fields[4]->name }} </h2>
             <div class="row carousel-slider2 tornado-ui">
-                @foreach ($fields[1]->value->posts as $t)
+                @foreach ($fields[4]->value->posts as $t)
                 <div class="col-s-12 col-m-6 col-l-4 portfolio-block ">
                     <div class="block">
                         <div class="img-block">
@@ -182,10 +174,10 @@
 
     <section id="ourTeam" class="our-team">
         <div class="container">
-            <h2>{{$fields[2]->name}}</h2>
+            <h2>{{$fields[5]->name}}</h2>
             <div class="row carousel-slider tornado-ui">
 
-            @foreach ($fields[2]->value->posts as $t)
+            @foreach ($fields[5]->value->posts as $t)
             <div class="col-s-12 col-m-6 col-l-3 team-block ">
                     <div class="img-block">
                         <img src="/images/{{ $t->image }}">
@@ -212,24 +204,23 @@
                     <div class="icon-block"><i class="ti-android-mail"></i></div>
                     <div class="icon-content">
                         <h3>تواصل معنا عبر البريد</h3>
-                        <p>info@elshaalan.com</p>
-                        <span>HR@Alshaalah.com</span>
+                        <p>{{$settings['email1']}}</p>
+                        <span>{{$settings['email2']}}</span>
                     </div>
                 </div>
                 <div class="icon col-s-12 col-m-6 col-l-4">
                     <div class="icon-block"><i class="ti-phone"></i></div>
                     <div class="icon-content">
                         <h3> تواصل معنا عبر الهاتف</h3>
-                        <p> 0020102598532158 </p>
-                        <span>0565231230456946</span>
+                        <p> {{$settings['phone1']}} </p>
+                        <span>{{$settings['phone2']}}</span>
                     </div>
                 </div>
                 <div class="icon col-s-12 col-m-6 col-l-4">
                     <div class="icon-block"><i class="ti-place"></i></div>
                     <div class="icon-content">
                         <h3> المقر الرئيسى</h3>
-                        <p> 9 ش ابو بكر الصديق – ارض الحريه </p>
-                        <span>بنى سويف</span>
+                        <p>{{$settings['address']}}</p>
                     </div>
                 </div>
             </div>

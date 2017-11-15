@@ -8,6 +8,7 @@ use MahaCMS\MahaCMS\Models\Page;
 use MahaCMS\Blog\Models\Post;
 use MahaCMS\Blog\Models\Category;
 use MahaCMS\MahaCMS\Classes\Field;
+use MahaCMS\Settings\Models\Setting;
 
 class PagesController extends Controller
 {
@@ -17,14 +18,19 @@ class PagesController extends Controller
             abort(404);
         }
         $fields = $this->getPageFields($page);
-        
-        return view('pages.' . $page->view, ['fields' => $fields]);
+        $settings = Setting::all();
+        $settings = $settings->mapWithKeys(function ($item) {
+            return [$item['setting_name'] => $item['setting_value']];
+        });
+        return view('pages.' . $page->template->name, ['fields' => $fields, 'settings' => $settings]);
     }
-    public function home() {
+/*     public function home() {
         $page = Page::where('slug', 'home')->first();
         $fields = $this->getPageFields($page);
-        return view('pages.' . $page->view, ['fields' => $fields]);
-    }
+        $settings = Setting::all();
+        dd($settings);
+        return view('pages.' . $page->view, ['fields' => $fields, 'settings' => $settings]);
+    } */
 
     protected function getPageFields($page)
     {

@@ -12,7 +12,6 @@ class CategoriesTableSeeder extends Seeder
     public function run()
     {
         $this->generateDefualtCategories();
-        factory(MahaCMS\Blog\Models\Post::class, 50)->create();
     }
 
     protected function generateDefualtCategories()
@@ -22,7 +21,7 @@ class CategoriesTableSeeder extends Seeder
             ['name' => 'سابقة أعمالنا', 'slug' => 'portfolio'],
             ['name' => 'فريق العمل', 'slug' => 'team'],
             ['name' => 'المكتبة الالكترونية للاستثمار والتمويل', 'slug' => 'library'],
-            ['name' => 'اتصل بنا', 'slug' => 'contactus'],
+            ['name' => 'اتصل بنا', 'slug' => 'contact'],
         ]);
     }
 }

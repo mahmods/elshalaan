@@ -1,5 +1,6 @@
 <template>
-	<div v-if="!loading">
+<spinner v-if="loading" size="big"></spinner>
+	<div v-else>
 		<div id="search-wrapper"><input type="text" id="search" v-model="search"></div>
         <table class="table">
             <thead>
@@ -9,6 +10,7 @@
 					<th>Description</th>
 					<th>Category</th>
 					<th>Date</th>
+					<th>User</th>
 					<th>Actions</th>
                 </tr>
             </thead>
@@ -19,6 +21,7 @@
                     <td>{{item.description}}</td>
                     <td>{{item.category.name}}</td>
                     <td>{{item.created_at}}</td>
+					<td>{{item.user.name}}</td>
 					<td>
 						<router-link class="btn btn-primary" :to="'/dashboard/posts/' +item.id+'/update'"><icon name="pencil"></icon></router-link>
 						<button class="btn btn-danger" v-on:click="remove(item.id)"><icon name="trash"></icon></button>

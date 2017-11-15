@@ -1,5 +1,6 @@
 <template>
-	<div v-if="!loading">
+<spinner v-if="loading" size="big"></spinner>
+	<div v-else>
         <table class="table">
             <thead>
                 <tr>
@@ -63,6 +64,9 @@ export default {
 				if(response.data.success) {
 					this.getData();
 				}
+			})
+			.catch(err => {
+				this.$toasted.show(err.response.data.error, {type: 'error'})
 			})
 		}
     },

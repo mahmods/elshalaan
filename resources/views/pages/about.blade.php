@@ -48,24 +48,23 @@
                     <div class="icon-block"><i class="ti-android-mail"></i></div>
                     <div class="icon-content">
                         <h3>تواصل معنا عبر البريد</h3>
-                        <p>info@elshaalan.com</p>
-                        <span>HR@Alshaalah.com</span>
+                        <p>{{$settings['email1']}}</p>
+                        <span>{{$settings['email2']}}</span>
                     </div>
                 </div>
                 <div class="icon col-s-12 col-m-6 col-l-4">
                     <div class="icon-block"><i class="ti-phone"></i></div>
                     <div class="icon-content">
                         <h3> تواصل معنا عبر الهاتف</h3>
-                        <p> 0020102598532158 </p>
-                        <span>0565231230456946</span>
+                        <p> {{$settings['phone1']}} </p>
+                        <span>{{$settings['phone2']}}</span>
                     </div>
                 </div>
                 <div class="icon col-s-12 col-m-6 col-l-4">
                     <div class="icon-block"><i class="ti-place"></i></div>
                     <div class="icon-content">
                         <h3> المقر الرئيسى</h3>
-                        <p> 9 ش ابو بكر الصديق – ارض الحريه </p>
-                        <span>بنى سويف</span>
+                        <p>{{$settings['address']}}</p>
                     </div>
                 </div>
             </div>
