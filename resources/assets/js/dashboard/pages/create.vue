@@ -105,6 +105,7 @@ export default {
             }).catch(err => {
                 this.errors = err.response.data.errors
                 this.error = err.response.data.message
+                console.log(err.response.data)
             })
         }
     }

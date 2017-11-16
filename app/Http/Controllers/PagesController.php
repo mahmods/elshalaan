@@ -50,8 +50,13 @@ class PagesController extends Controller
     }
     public function content($id)
     {
+        $settings = Setting::all();
+        $settings = $settings->mapWithKeys(function ($item) {
+            return [$item['setting_name'] => $item['setting_value']];
+        });
         return view('pages.content', [
-            'post' => $this->getPost($id)
+            'post' => $this->getPost($id),
+            'settings' => $settings
             ]);
     }
 

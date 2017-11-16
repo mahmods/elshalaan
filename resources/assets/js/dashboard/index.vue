@@ -1,6 +1,7 @@
 <template>
 	<div class="dashboard">
-		<div class="dashboard__sideBar">
+		<div v-if="loggedIn()" class="dashboard__sideBar">
+			<div class="dashboard__sideBar--wrapper">
 			<h1 class="dashboard__sideBar--title">Dashboard</h1>
 			<spinner v-if="loading" size="big"></spinner>
 			<div v-else class="dashboard__sideBar--list">
@@ -27,10 +28,11 @@
 				<div v-show="this.$auth.getToken() != null" class="dashboard__sideBar--list-item">
 					<h1 style="cursor: pointer;" class="dashboard__sideBar--list-item-title" @click="logout">Logout</h1>
 				</div>
-			</div>			
+			</div>	
+			</div>		
 		</div>
 		<div class="dashboard__content">
-			<div class="dashboard__content--header">
+			<div v-if="loggedIn()"  class="dashboard__content--header">
 				<h1>Dashboard</h1>
 				<div>
 					<router-link to="/dashboard">Home</router-link><span v-if="$route.meta.model || $route.params.model">  /  </span>
@@ -44,23 +46,24 @@
 </template>
 
 <script>
-import { get, post } from '../helpers/api'
 export default {
 	data() {
 		return {
 			menu: [],
 			menu_state: [],
-			loading: true
+			loading: true,
 		}
 	},
 	created() {
 		this.fetchMenu()
 	},
 	methods: {
+		loggedIn() {
+			return !this.$route.path.includes('login')
+		},
 		fetchMenu() {
-			get('menu')
+			this.$api.get('menu')
 			.then(response => {
-				console.log(response.data)
 				this.menu = response.data.menu
 				this.menu.forEach(m => {
 					this.menu_state.push(false)
@@ -68,7 +71,6 @@ export default {
 				this.loading = false
 			})
 			.catch(err => this.loading = false)
-			
 		},
 		menuHasSingleItem(m) {
 			if(m.items.length == 1 )
@@ -81,7 +83,7 @@ export default {
 			this.$set(this.menu_state, id, !this.menu_state[id])
         },
 		logout() {
-			get('logout')
+			this.$api.get('logout')
 			.then(response => {
 				if(response.data.success) {
 					this.$auth.destroy()
@@ -98,6 +100,10 @@ export default {
 		background: #f4f7fa;
 		font-size: 0.8rem;
 	}
+	.wrapper, html, body {
+		height:100%;
+		margin:0;
+	}
 	
 	button {
 		cursor: pointer;
@@ -107,13 +113,22 @@ export default {
 		font-size: 0.8rem;
 	}
 
+	.dashboard {
+		height: 100%;
+		display: flex;
+	}
+
 	.dashboard__sideBar {
+		flex-basis: 250px;
+		background: #2F3640;
+	}
+
+	.dashboard__sideBar--wrapper {
+		background: #2F3640;
 		position: fixed;
-		width: 200px;
+		width: 250px;
 		top: 0;
 		bottom: 0;
-		background: #2F3640;
-		flex-basis: 300px;
 		padding: 20px;
 		display: flex;
 		flex-direction: column;
@@ -171,7 +186,7 @@ export default {
 	}
 
 	.dashboard__content {
-		margin-left: 200px;
+		flex: 1;
 		display: flex;
 		flex-direction: column;
 	}

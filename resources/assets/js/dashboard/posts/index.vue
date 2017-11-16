@@ -1,8 +1,22 @@
 <template>
-<spinner v-if="loading" size="big"></spinner>
-	<div v-else>
+	<div>
 		<div id="search-wrapper"><input type="text" id="search" v-model="search"></div>
-        <table class="table">
+		<nav class="pagination-wrapper">
+			<ul class="pagination">
+				<li class="page-item" :class="data.current_page == 1 ? 'disabled' : ''">
+					<button  @click.prevent="previous" class="page-link">previous page</button>
+				</li>
+				<li class="page-item" :class="i == data.current_page ? 'active': ''" v-for="i in data.last_page" :key="i">
+					<button v-text="i" @click.prevent="go(i)" class="page-link"></button>
+				</li>
+				<li class="page-item" :class="data.current_page == data.last_page ? 'disabled' : ''">
+					<button @click.prevent="next" class="page-link">next page</button>
+				</li>
+			</ul>
+		</nav>
+
+		<spinner v-if="loading" size="big"></spinner>
+        <table class="table" v-else>
             <thead>
                 <tr>
 					<th>#</th>
@@ -29,6 +43,20 @@
                 </tr>
             </tbody>
         </table>
+
+		<nav class="pagination-wrapper">
+			<ul class="pagination">
+				<li class="page-item" :class="data.current_page == 1 ? 'disabled' : ''">
+					<button  @click.prevent="previous" class="page-link">previous page</button>
+				</li>
+				<li class="page-item" :class="i == data.current_page ? 'active': ''" v-for="i in data.last_page" :key="i">
+					<button v-text="i" @click.prevent="go(i)" class="page-link"></button>
+				</li>
+				<li class="page-item" :class="data.current_page == data.last_page ? 'disabled' : ''">
+					<button @click.prevent="next" class="page-link">next page</button>
+				</li>
+			</ul>
+		</nav>
 	</div>
 </template>
 
@@ -45,7 +73,7 @@ export default {
 	computed: {
 		filteredData: function () {
 			const exp = new RegExp(this.search, 'i')
-			return this.data.items.filter(item => {
+			return this.data.data.filter(item => {
 				return ( exp.test(item.id) || exp.test(item.title) || exp.test(item.category.name) || exp.test(item.category.description))
 			})
 		}
@@ -56,30 +84,42 @@ export default {
 	methods: {
 		getData() {
 			this.loading = true;
-			axios({
-				method: 'GET',
-				url: '/api/posts',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get('posts')
 			.then(response => {
 				this.data = response.data
 				this.loading = false;
 			})
 		},
 		remove(id) {
-			axios({
-				method: 'DELETE',
-				url: '/api/posts/' + id,
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.del('posts/' + id)
 			.then(response => {
 				if(response.data.success) {
 					this.getData();
 				}
+			})
+		},
+		next() {
+			this.loading = true;
+			this.$api.get('posts?page=' + (this.data.current_page + 1))
+			.then(response => {
+				this.data = response.data
+				this.loading = false;
+			})
+		},
+		go(id) {
+			this.loading = true;
+			this.$api.get('posts?page=' + id)
+			.then(response => {
+				this.data = response.data
+				this.loading = false;
+			})
+		},
+		previous() {
+			this.loading = true;
+			this.$api.get('posts?page=' + (this.data.current_page - 1))
+			.then(response => {
+				this.data = response.data
+				this.loading = false;
 			})
 		}
     },
@@ -96,6 +136,11 @@ export default {
 	textarea:focus,
 	button:focus {
 		outline: none;
+	}
+
+	.pagination-wrapper {
+		display: flex;
+		justify-content: center;
 	}
 
 	#search-wrapper {

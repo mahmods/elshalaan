@@ -62,6 +62,7 @@ export default {
 			})
 			.then(response => {
 				if(response.data.success) {
+					this.$toasted.show('Deleted!', {type: 'success'})
 					this.getData();
 				}
 			})

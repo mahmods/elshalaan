@@ -9,22 +9,9 @@ return [
             'title' => 'Inbox',
             'items' => [
                 [
+                    'permission'=> "inbox.access",
                     'text' => 'Inbox',
                     'link' => '/inbox',
-                ],
-            ]
-        ],
-        [
-            'icon' => 'file-text',
-            'title' => 'Pages',
-            'items' => [
-                [
-                    'text' => 'Pages List',
-                    'link' => '/pages',
-                ],
-                [
-                    'text' => 'Create Page',
-                    'link' => '/pages/create',
                 ],
             ]
         ],
@@ -33,6 +20,7 @@ return [
             'title' => 'Navigation',
             'items' => [
                 [
+                    'permission'=> "navigation.manage",
                     'text' => 'Navigation',
                     'link' => '/nav',
                 ],

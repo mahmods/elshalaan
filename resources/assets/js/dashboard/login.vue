@@ -39,11 +39,7 @@ export default {
     },
 	methods: {
 		login() {
-			axios({
-				method: 'POST',
-				url: '/api/login',
-				data: this.form,
-			})
+            this.$api.post('login', this.form)
 			.then(response => {
 				if(response.data.authenticated) {
                     this.$auth.setAuth(response.data.api_token, response.data.user_id)

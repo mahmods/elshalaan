@@ -7,13 +7,13 @@
 		    <label>Slug</label>
             <input v-model="form.slug" type="text" class="form-control">
           </div>
-          <!-- <div class="form-group">
+          <div class="form-group">
 		    <label>Template</label>
-            <input v-model="form.view" type="text" class="form-control" :class="(errors.slug) ? 'is-invalid' : ''">
-            <select @change="template_change" v-model="form.template_id" class="form-control">
+            <input disabled v-model="templates[form.template_id].name" type="text" class="form-control" :class="(errors.slug) ? 'is-invalid' : ''">
+            <!-- <select @change="template_change" v-model="form.template_id" class="form-control">
                 <option v-for="template in templates" :key="template.id" :value="template.id">{{template.name}}</option>
-            </select>
-          </div> -->
+            </select> -->
+          </div>
           <div class="form-group">
 		    <label>Fields</label>
               <!-- <button class="btn btn-primary btn-sm" @click.prevent="addField">+</button> -->

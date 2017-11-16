@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import router from './router/index'
 import Auth from './store/Auth'
+import Api from './helpers/api'
 import Toasted from 'vue-toasted';
 import 'vue-awesome/icons'
 import Icon from 'vue-awesome/components/Icon'
@@ -14,6 +15,7 @@ Vue.component('spinner', Spinner)
 
 Vue.use(VueRouter)
 Vue.use(Auth)
+Vue.use(Api)
 Vue.use(Toasted, {
     position: 'bottom-right',
     duration: '3000',
