@@ -14,8 +14,6 @@
 </template>
 
 <script>
-import axios from 'axios'
-import Auth from '../store/Auth'
 export default {
 	data() {
 		return {
@@ -35,13 +33,7 @@ export default {
 	methods: {
 		getData() {
 			this.loading = true;
-			axios({
-				method: 'GET',
-				url: '/api/users/' + this.$route.params.id + '/roles',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get('users/' + this.$route.params.id + '/roles')
 			.then(response => {
                 this.data = response.data
                 this.data.roles.forEach(role => {
@@ -53,15 +45,7 @@ export default {
 			})
         },
         save() {
-            console.log(this.selected)
-            axios({
-				method: 'POST',
-                url: '/api/users/' + this.$route.params.id + '/roles',
-                data: this.selected,
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.post('users/' + this.$route.params.id + '/roles', this.selected)
 			.then(response => {
 			})
         }

@@ -50,7 +50,6 @@
 </template>
 
 <script>
-import { get, post } from '../../helpers/api'
 export default {
     data() {
         return {
@@ -68,7 +67,7 @@ export default {
         }
     },
     created() {
-        get('pages/create')
+        this.$api.get('pages/create')
         .then(response => {
             this.templates = response.data.templates
             this.categories = response.data.categories
@@ -95,7 +94,7 @@ export default {
 
         },
         save() {
-            post('pages', this.form)
+            this.$api.post('pages', this.form)
             .then(response => {
                 if (response.data.success) {
                     this.errors = []

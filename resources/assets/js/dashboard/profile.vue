@@ -23,7 +23,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
 	data() {
 		return {
@@ -42,13 +41,7 @@ export default {
 	methods: {
 		getData() {
 			this.loading = true;
-			axios({
-				method: 'GET',
-				url: '/api/profile',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get('profile')
 			.then(response => {
 				console.log(response.data)
 				this.profile = response.data.profile
@@ -56,14 +49,7 @@ export default {
 			})
 		},
 		save() {
-			axios({
-				method: 'POST',
-				url: '/api/profile',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				},
-				data: this.profile
-			})
+			this.$api.post('profile', this.profile)
 			.then(response => {
 				if(response.data.success) {
 					this.$toasted.show('Changes saved successfully!', {type: 'success'})

@@ -25,7 +25,6 @@
 </template>
 
 <script>
-import { get, post } from '../helpers/api'
 import { VueEditor } from 'vue2-editor'
 import Pluralize from 'pluralize'
 import Spinner from 'vue-simple-spinner'
@@ -70,7 +69,7 @@ export default {
             }
 
 			this.loading = true;
-			get(this.initializeURL)
+			this.$api.get(this.initializeURL)
 			.then(response => {
 				this.data = response.data
 				this.loading = false;
@@ -107,7 +106,7 @@ export default {
 			this.data.form.forEach(input => {
 				form.set(input.model, input.value)
 			})
-			post(this.storeURL, form)
+			this.$api.post(this.storeURL, form)
 			.then(response => {
 				this.data.form.id = response.data.id
 				if(response.data.success) {

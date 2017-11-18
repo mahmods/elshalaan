@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
 	data() {
 		return {
@@ -34,13 +33,7 @@ export default {
 	methods: {
 		getData() {
 			this.loading = true;
-			axios({
-				method: 'GET',
-				url: '/api/roles/' + this.$route.params.id + '/permissions',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get(`roles/${this.$route.params.id}/permissions`)
 			.then(response => {
                 this.data = response.data
                 this.data.permissions.forEach(permission => {
@@ -52,14 +45,7 @@ export default {
 			})
         },
         save() {
-            axios({
-				method: 'POST',
-                url: '/api/roles/' + this.$route.params.id + '/permissions',
-                data: this.selected,
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.post(`roles/${this.$route.params.id}/permissions`, this.data)
 			.then(response => {
 			})
         }

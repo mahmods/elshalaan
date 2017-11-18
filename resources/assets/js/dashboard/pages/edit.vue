@@ -45,7 +45,6 @@
 </template>
 
 <script>
-import { get, post } from '../../helpers/api'
 export default {
     data() {
         return {
@@ -62,7 +61,7 @@ export default {
         }
     },
     created() {
-        get('pages/' + this.$route.params.id + '/edit')
+        this.$api.get('pages/' + this.$route.params.id + '/edit')
         .then(response => {
             this.templates = response.data.templates
             this.categories = response.data.categories
@@ -96,7 +95,7 @@ export default {
 
         },
         save() {
-            post('pages/' + this.$route.params.id + '?_method=PUT', this.form)
+            this.$api.post('pages/' + this.$route.params.id + '?_method=PUT', this.form)
             .then(response => {
                 if (response.data.success) {
                     this.errors = []

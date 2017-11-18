@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
 	data() {
 		return {
@@ -41,26 +40,14 @@ export default {
 	methods: {
 		getData() {
 			this.loading = true;
-			axios({
-				method: 'GET',
-				url: '/api/roles',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get('roles')
 			.then(response => {
 				this.data = response.data
 				this.loading = false;
 			})
 		},
 		remove(id) {
-			axios({
-				method: 'DELETE',
-				url: '/api/roles/' + id,
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.del(`roles/${id}`)
 			.then(response => {
 				if(response.data.success) {
 					this.getData();

@@ -12,7 +12,7 @@ let mix = require('laravel-mix');
  */
 
 mix.js('resources/assets/js/app.js', 'public/js')
-   .sass('resources/assets/sass/app.scss', 'public/css')
+/*    .sass('resources/assets/sass/app.scss', 'public/css')
    .styles([
    		'resources/assets/css/tornado-rtl.css',
    		'resources/assets/css/animations.css',
@@ -30,4 +30,4 @@ mix.js('resources/assets/js/app.js', 'public/js')
 	.scripts([
 		'resources/assets/js/style/script.js',
 	], 'public/js/script.js')
-   .copyDirectory('resources/assets/css/fonts', 'public/css/fonts');
+   .copyDirectory('resources/assets/css/fonts', 'public/css/fonts'); */

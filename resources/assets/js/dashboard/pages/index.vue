@@ -40,26 +40,14 @@ export default {
 	methods: {
 		getData() {
 			this.loading = true;
-			axios({
-				method: 'GET',
-				url: '/api/pages',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get('pages')
 			.then(response => {
 				this.data = response.data
 				this.loading = false;
 			})
 		},
 		remove(id) {
-			axios({
-				method: 'DELETE',
-				url: '/api/pages/' + id,
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.del(`pages/${id}`)
 			.then(response => {
 				if(response.data.success) {
 					this.$toasted.show('Deleted!', {type: 'success'})

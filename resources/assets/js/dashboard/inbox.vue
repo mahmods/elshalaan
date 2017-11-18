@@ -11,7 +11,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
     data() {
 		return {
@@ -19,13 +18,7 @@ export default {
 		}
 	},
     created() {
-        axios({
-            method: 'GET',
-            url: '/api/CRUD/contactus',
-            headers: {
-                'Authorization': 'Bearer ' + this.$auth.getToken()
-            }
-        })
+        this.$api.get('CRUD/contactus')
         .then(response => {
             console.log(response.data)
             this.messages = response.data.rows

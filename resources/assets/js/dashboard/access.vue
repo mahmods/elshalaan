@@ -22,7 +22,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 import Permissions from '../store/Permissions'
 export default {
 	data() {
@@ -44,26 +43,14 @@ export default {
 	},
 	methods: {
 		getData() {
-			axios({
-				method: 'GET',
-				url: '/api/' + this.$route.params.model,
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get(this.$route.params.model)
 			.then(response => {
 				this.data = response.data
 				this.loading = false
 			})
 		},
 		remove(id) {
-			axios({
-				method: 'DELETE',
-				url: '/api/' + this.$route.params.model + '/' + id,
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.del(this.$route.params.model + '/' + id)
 			.then(response => {
 				if(response.data.success) {
 					this.$toasted.show(this.$route.params.model + ' deleted successfully!', {type: 'success'})

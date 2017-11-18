@@ -52,7 +52,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
 	data() {
 		return {
@@ -71,33 +70,18 @@ export default {
 		},
 		getData() {
 			this.loading = true;
-			axios({
-				method: 'GET',
-				url: '/api/settings',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				}
-			})
+			this.$api.get('settings')
 			.then(response => {
 				this.settings = response.data.settings
 				this.loading = false;
 			})
 		},
 		save() {
-			axios({
-				method: 'POST',
-				url: '/api/settings',
-				headers: {
-					'Authorization': 'Bearer ' + this.$auth.getToken()
-				},
-				data: this.settings
-			})
+			this.$api.post('settings', this.settings)
 			.then(response => {
 				if(response.data.success) {
 					this.$toasted.show('Changes saved successfully!', {type: 'success'})
 				}
-				//this.settings = response.data.settings
-				console.log(response.data)
 			})
 		}
     }

@@ -2,7 +2,6 @@
 	<div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
-                <div v-if="error !== null" class="alert alert-danger" role="alert">{{error}}</div>
                 <form @submit.prevent="login">
                     <h1>Login</h1>
                 <div class="form-group">
@@ -13,6 +12,7 @@
                     <label>Password</label>
                     <input v-model="form.password" type="password" class="form-control">
                 </div>
+                <div v-if="error !== null" class="alert alert-danger" role="alert">{{error}}</div>
                 <button type="submit" class="btn btn-primary">Login</button>
                 </form>
             </div>
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import axios from 'axios'
 export default {
 	data() {
 		return {

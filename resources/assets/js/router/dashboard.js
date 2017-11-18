@@ -25,11 +25,11 @@ export default [
         path: '/dashboard', component: Dashboard,   
         children: [
             { path: '/', component: PostsList, meta: { requiresAuth: true } },
-            { path: 'inbox', component: Inbox, meta: { requiresAuth: true, model: 'Inbox' }},
             { path: 'login', component: Login },
             { path: 'register', component: Register },
             
-            { path: 'nav', component: Nav, meta: { requiresAuth: true, model: 'Pages' }},
+            { path: 'inbox', component: Inbox, meta: { requiresAuth: true, model: 'Inbox' }},
+            { path: 'nav', component: Nav, meta: { requiresAuth: true, model: 'Navigation' }},
 
             { path: 'pages', component: Pages, meta: { requiresAuth: true, model: 'Pages' }},
             { path: 'pages/create', component: PageCreate, meta: { requiresAuth: true, model: 'Pages' }},

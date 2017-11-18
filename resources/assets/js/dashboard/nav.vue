@@ -33,7 +33,6 @@
 
 <script>
 import draggable from 'vuedraggable'
-import {get, post} from '../helpers/api'
 export default {
     components: {
         draggable,
@@ -48,7 +47,7 @@ export default {
         }
     },
     created() {
-        get('nav')
+        this.$api.get('nav')
         .then(response => {
             this.nav.items = response.data
             this.loading = false
@@ -56,7 +55,7 @@ export default {
     },
     methods: {
         save() {
-            post('nav', this.nav)
+            this.$api.post('nav', this.nav)
             .then(response => {
                 console.log(response.data)
                 if (response.data.success) {

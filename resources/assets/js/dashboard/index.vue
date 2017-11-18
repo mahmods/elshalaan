@@ -55,11 +55,18 @@ export default {
 		}
 	},
 	created() {
-		this.fetchMenu()
+		if(this.loggedIn()) {
+			this.fetchMenu()
+		}
+	},
+	watch: {
+		'$route.path'() {
+			this.fetchMenu()
+		}
 	},
 	methods: {
 		loggedIn() {
-			return !this.$route.path.includes('login')
+			return !(this.$route.path.includes('login') || this.$route.path.includes('register'))
 		},
 		fetchMenu() {
 			this.$api.get('menu')
